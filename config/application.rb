@@ -19,5 +19,11 @@ module Mifd
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
+    Twitter.configure do |config|
+      config.consumer_key        = "2wfjnSrPWPSTdqZVlWYyJg"
+      config.consumer_secret     = "k5iqKtaLyZlnOcVJKg5VrdSTOBPYY55ta6nvRoClo"
+      config.oauth_token        = "177910822-Gb1OhQPvC4YRAgU8CYSuu8grboYIelEuqIAM7jup"
+      config.oauth_token_secret = "NcgGmYOp3v9tKVOcG8Jw9ODeleWKn9yMt7Ac6k5YI1Qcv"
+    end
   end
 end
