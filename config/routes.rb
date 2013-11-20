@@ -15,6 +15,7 @@ Mifd::Application.routes.draw do
     namespace :v1 do
       resources :tweets do
         collection do
+          get 'rank'
         end
       end
     end
