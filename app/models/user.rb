@@ -3,6 +3,7 @@ class User
   field :uuid, type: String
   field :name, type: String
   field :screen_name, type: String
+  field :image, type:String
   has_many :tweets, autosave: true
 
   def self.save(timeline)
@@ -19,6 +20,7 @@ class User
                         :text => timeline.text,
                         :retweet_count => timeline.retweet_count,
                         :favorite_count => timeline.favorite_count,
+                        :score => timeline.retweet_count+timeline.favorite_count,
                         :uuid => timeline.id)
       user.save
     end

@@ -5,13 +5,18 @@ class Tweet
   field :created_at, type: Date
   field :retweet_count, type: Integer
   field :favorite_count, type: Integer
-  field :socre, type: Integer
-  scope :retweet, order_by("retweet_count DESC")
-  scope :favorite, order_by("favorite_count DESC")
-  scope :today, order_by("created_at DESC")
+  field :score, type: Integer
+  scope :mifd_rank, order_by("score DESC")
   belongs_to :user
 
   def self.rank
-    Tweet.today.retweet.favorite
+    tweets = Tweet.includes(:user).mifd_rank
+    tweets.each_with_object([]){|tweet, tweet_with_user|
+      tweet.attributes.delete("_id")
+      tweet.attributes.delete("user_id")
+      tweet.user.attributes.delete("_id")
+      tweet.attributes[:user] = tweet.user.attributes
+      tweet_with_user << tweet.attributes
+    }
   end
 end
