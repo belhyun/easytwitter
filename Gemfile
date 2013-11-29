@@ -38,6 +38,8 @@ gem 'bson', '~> 2.0.0.rc2'
 gem 'bson_ext'
 gem 'mongoid', git: 'https://github.com/mongoid/mongoid.git'
 gem 'kaminari'
+
+gem 'rspec-rails', '~> 3.0.0.beta'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

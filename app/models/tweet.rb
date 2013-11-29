@@ -9,14 +9,19 @@ class Tweet
   scope :mifd_rank, order_by("score DESC")
   belongs_to :user
 
-  def self.rank
+  def self.rank(cur_page)
     tweets = Tweet.includes(:user).mifd_rank
-    tweets.each_with_object([]){|tweet, tweet_with_user|
+    tweets = tweets.each_with_object([]){|tweet, tweet_with_user|
       tweet.attributes.delete("_id")
       tweet.attributes.delete("user_id")
       tweet.user.attributes.delete("_id")
       tweet.attributes[:user] = tweet.user.attributes
-      tweet_with_user << tweet.attributes
+      tweet_with_user <<  tweet.attributes
     }
+    hash = Hash.new
+    hash[:tweets] = tweets
+    hash[:total_page] = (tweets.count / 10.0).ceil
+    hash[:total_count] = tweets.count
+    hash
   end
 end
