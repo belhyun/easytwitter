@@ -10,6 +10,7 @@ class User
     if !User.where(uuid: timeline.user.id).exists?
       user = User.new(:uuid => timeline.user.id, 
                       :name => timeline.user.name, 
+                      :image => timeline.user.profile_image_url,
                       :screen_name => timeline.user.screen_name)
     else
       user = User.find_by(uuid: timeline.user.id)
