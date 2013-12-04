@@ -24,6 +24,8 @@ class User
                         :score => timeline.retweet_count+timeline.favorite_count,
                         :uuid => timeline.id)
       user.save
+    else
+      Tweet.where(uuid: timeline.id).update(score: timeline.retweet_count+timeline.favorite_count)
     end
   end
 end

@@ -2,6 +2,7 @@ module Api
   module V1
     class TweetsController < ApplicationController
       respond_to :json
+      Mongoid.logger.level = Logger::DEBUG
       def index
         @result = Array.new
         hash = Hash.new

@@ -40,6 +40,8 @@ gem 'mongoid', git: 'https://github.com/mongoid/mongoid.git'
 gem 'kaminari'
 
 gem 'rspec-rails', '~> 3.0.0.beta'
+
+gem 'whenever'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
