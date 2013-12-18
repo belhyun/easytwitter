@@ -7,10 +7,11 @@ class Tweet
   field :favorite_count, type: Integer
   field :score, type: Integer
   scope :mifd_rank, order_by("score DESC")
+  has_many :user_tweets, autosave: true
   belongs_to :user
 
   def self.rank(cur_page)
-    tweets = Tweet.includes(:user).mifd_rank
+    tweets = Tweet.includes(:user).mifd_rank.where(:created_at.gte => Date.today-1)
     tweets = tweets.each_with_object([]){|tweet, tweet_with_user|
       tweet.attributes.delete("_id")
       tweet.attributes.delete("user_id")

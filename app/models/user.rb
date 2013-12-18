@@ -5,7 +5,7 @@ class User
   field :screen_name, type: String
   field :image, type:String
   has_many :tweets, autosave: true
-
+ 
   def self.save(timeline)
     if !User.where(uuid: timeline.user.id).exists?
       user = User.new(:uuid => timeline.user.id, 

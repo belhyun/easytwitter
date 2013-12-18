@@ -18,6 +18,8 @@ Mifd::Application.routes.draw do
           get 'rank'
         end
       end
+      resources :user_tweets do
+      end
     end
   end
   root to: 'tweets#index'
