@@ -10,7 +10,7 @@ module Api
       private
       def user_tweet_params
         params.require(:user_desc)
-        params.require(:tweet_id)
+        params.require(:tweet_uuid)
         params.require(:type)
       end
     end
