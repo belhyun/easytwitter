@@ -1,4 +1,7 @@
 class UserTweet
+  class << self
+    attr_accessor :params
+  end
   include Mongoid::Document
   field :user_desc, type:String
   field :type, type:String
@@ -8,6 +11,7 @@ class UserTweet
   scope :type_exists, ->(type){ where(type: type) }
   scope :user_desc_exists, ->(user_desc){ where(user_desc: user_desc) }
   
+=begin
   def self.params=(params)
    @params = params 
   end
@@ -15,6 +19,7 @@ class UserTweet
   def self.params
     @params
   end
+=end
 
   def self.criteria
     UserTweet.where(user_desc: params[:user_desc], 
@@ -23,7 +28,7 @@ class UserTweet
   end
 
   def self.save
-    if criteria.exists?
+    if !criteria.exists?
       tweet = Tweet.find_by(uuid: params[:tweet_uuid])
       tweet.user_tweets.create(Hash[params])
       _success
@@ -34,6 +39,7 @@ class UserTweet
 
   def self.delete
     if criteria.exists?
+       criteria.delete
       _success
     else
       _fail('resource not exists')
