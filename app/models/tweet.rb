@@ -9,6 +9,7 @@ class Tweet
   scope :mifd_rank, order_by("score DESC")
   has_many :user_tweets, autosave: true
   belongs_to :user
+  scope :tweet_uuid, ->(tweet_uuid){where(tweet_uuid: tweet_uuid)}
 
   def self.rank(cur_page)
     tweets = Tweet.includes(:user).mifd_rank.where(:created_at.gte => Date.today-1)

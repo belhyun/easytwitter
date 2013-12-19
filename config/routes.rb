@@ -18,10 +18,11 @@ Mifd::Application.routes.draw do
           get 'rank'
         end
       end
-      resources :user_tweets do
-      end
+      resources :user_tweets, only: [:create] 
     end
   end
+
+  delete '/api/v1/user_tweets/:tweet_uuid' => 'api/v1/user_tweets#destroy'
   root to: 'tweets#index'
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
