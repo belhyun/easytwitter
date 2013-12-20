@@ -29,7 +29,7 @@ module Api
         render :json => @result.to_json
       end
       def rank
-        hash = Tweet.rank(params[:page])
+        hash = Tweet.rank(params[:page], params[:user_desc])
         tweets = Kaminari.paginate_array(hash[:tweets]).page(params[:page]).per(10)
         hash[:tweets ] = Kaminari.paginate_array(hash[:tweets]).page(params[:page]).per(10)
         render :json => hash.to_json

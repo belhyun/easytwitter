@@ -11,15 +11,18 @@ class Tweet
   belongs_to :user
   scope :tweet_uuid, ->(tweet_uuid){where(tweet_uuid: tweet_uuid)}
 
-  def self.rank(cur_page)
+  def self.rank(cur_page, user_desc)
     tweets = Tweet.includes(:user).mifd_rank.where(:created_at.gte => Date.today-1)
     tweets = tweets.each_with_object([]){|tweet, tweet_with_user|
-      tweet.attributes.delete("_id")
       tweet.attributes.delete("user_id")
       tweet.user.attributes.delete("_id")
       tweet.attributes[:user] = tweet.user.attributes
+      tweet[:user_tweets] = UserTweet.where(user_desc: user_desc,tweet_id: tweet.id) 
+      UserTweet.where(user_desc: user_desc, tweet_id: tweet.id)
+      tweet.attributes.delete("_id")
       tweet_with_user <<  tweet.attributes
     }
+
     hash = Hash.new
     hash[:tweets] = tweets
     hash[:total_page] = (tweets.count / 10.0).ceil
