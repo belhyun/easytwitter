@@ -21,15 +21,68 @@
       border-top-left-radius: 5px;
       border-top-right-radius: 5px;
 
-      .user-desc{
-        display:block;
-        float:right;
-      }
+      .content{
+        margin-left:42px;
+        margin-right:20px;
 
-      .user-image{
-        img{
-          width:32px;
+        .user-desc{
+          display:block;
+          float:right;
+          padding: 10px 0;
+          font-size:14px;
+          color:#333;
+        }
+        .user-image{
           height:32px;
+          img{
+            width:32px;
+            height:32px;
+          }
+        }
+      }
+    }
+  }
+
+  .content-main{
+    float:right;
+    width:522px;
+    border: 1px solid;
+
+    .content-header{
+      border-bottom: 1px solid;
+
+      .header-inner{
+        padding: 12px;
+      }
+    }
+
+    .content-tweet{
+      list-style:none;
+      margin-left:0;
+      position:relative;
+
+      .tweet-items{
+        line-height:25px;
+        >li{
+          padding: 12px;
+          border-bottom: 1px solid;
+        }
+
+        .content{
+          margin-left: 58px;
+
+          .header{
+            margin-bottom: 5px;
+            img{
+              display:block;
+              float:left;
+              margin-left: -58px;
+            }
+
+            span.date{
+              float:right;
+            }
+          }
         }
       }
     }

@@ -1,14 +1,36 @@
 <div id="main">
-  <div class="dashboard">
-    <div class="mini-profile">
-      <div class="profile-summary">
-        <span class="user-image">
-          <%=image_tag("https://pbs.twimg.com/profile_images/1219763963/myProfileImage.jpg")%>
-        </span>
-        <span class="user-desc">belhyun</span>
+  <%= render partial: "tweets/dashboard" %>
+  <div class="content-main" role="main">
+    <div class="content-header">
+      <div class="header-innner">
+        <h2>Tweets</h2>
       </div>
     </div>
-  </div>
-  <div class="content-main" role="main">
+    <div class="content-tweet">
+      <ul class="tweet-items">
+        <% @tweets.each do |tweet|%>
+        <li>
+          <div class="content">
+            <div class="header">
+              <strong class="name">
+                <%= tweet[:user][:name] %>
+              </strong>
+              <%= image_tag(tweet[:user][:image]) %> 
+              <span class="date">
+                <%=time_ago_in_words(tweet[:created_at]) %>
+              </span>
+            </div>
+            <div class="tweet">
+              <div class="name">
+              <%= tweet[:text] %>
+              </div>
+            </div>
+            <div class="extra">
+            </div>
+          </div>
+        </li>
+        <% end %>
+      </ul>
+    </div>
   </div>
 </div>

@@ -4,10 +4,17 @@ body{
   line-height: 18px;
   margin: 0;
   padding: 0;
+  overflow-y: scroll;
   
   ul,ol{
     margin:0;
     padding:0;
     list-style:none;
+  }
+
+  h2{
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 20px;
   }
 }
