@@ -5,6 +5,8 @@ body{
   margin: 0;
   padding: 0;
   overflow-y: scroll;
+  background-color:rgb(192,222,237);
+  background-repeat:no-repeat;
   
   ul,ol{
     margin:0;
@@ -16,5 +18,9 @@ body{
     font-size: 18px;
     font-weight: bold;
     line-height: 20px;
+  }
+
+  a{
+    text-decoration:none;
   }
 }

@@ -43,6 +43,9 @@ gem 'rspec-rails', '~> 3.0.0.beta'
 
 gem 'whenever'
 gem 'rails_best_practices'
+gem 'backbone-on-rails'
+gem 'underscore-rails'
+gem 'gon'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

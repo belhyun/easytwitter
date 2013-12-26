@@ -1,6 +1,5 @@
 <div id="main">
-  <%= render partial: "tweets/dashboard" %>
-  <div class="content-main" role="main">
+  <div class="content-main white-background" role="main">
     <div class="content-header">
       <div class="header-innner">
         <h2>Tweets</h2>
@@ -15,7 +14,7 @@
               <strong class="name">
                 <%= tweet[:user][:name] %>
               </strong>
-              <%= image_tag(tweet[:user][:image]) %> 
+              <%= image_tag(tweet[:user][:image], alt: "Fail") %> 
               <span class="date">
                 <%=time_ago_in_words(tweet[:created_at]) %>
               </span>
@@ -25,8 +24,7 @@
               <%= tweet[:text] %>
               </div>
             </div>
-            <div class="extra">
-            </div>
+            <%= render partial: "tweets/footer" %>
           </div>
         </li>
         <% end %>
