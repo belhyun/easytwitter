@@ -8,4 +8,4 @@ class Mifd.Views.TweetsIndex extends Backbone.View
 
   retweet: (event) ->
     event.preventDefault()
-    alert('retweet')
+    #console.log(@collection.models[0].get('user'))
