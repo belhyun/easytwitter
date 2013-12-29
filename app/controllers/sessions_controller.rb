@@ -1,7 +1,6 @@
 class SessionsController < ApplicationController
   def create
-    user = User.from_omniauth(env['omniauth.auth'])
-    session[:uuid] = user[:uuid]
+    session[:user] = User.from_omniauth(env['omniauth.auth'])
     redirect_to root_url, notice: "Signed in"
   end
 end

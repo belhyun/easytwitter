@@ -32,7 +32,7 @@ class User
   end
 
   def self.from_omniauth(auth)
-    user = User.find_or_create_by({uuid: auth[:uid], name: "@#{auth[:info][:name]}", image: auth[:info][:image], 
-    screen_name: auth[:info][:nickname]})
+    user = User.find_or_create_by({uuid: auth[:uid], screen_name: "@#{auth[:info][:nickname]}", image: auth[:info][:image], 
+    name: auth[:info][:name]})
   end
 end

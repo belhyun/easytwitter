@@ -20,6 +20,7 @@
     .profile-summary{
       border-top-left-radius: 5px;
       border-top-right-radius: 5px;
+      background-color: yellow;
 
       .content{
         margin-left:42px;
@@ -46,7 +47,7 @@
   .content-main{
     width:522px;
     border: 1px solid;
-    margin: 0 auto;
+    float:right;
 
     .content-header{
       border-bottom: 1px solid;

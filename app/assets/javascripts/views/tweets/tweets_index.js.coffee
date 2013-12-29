@@ -8,6 +8,7 @@ class Mifd.Views.TweetsIndex extends Backbone.View
 
   retweet: (event) ->
     event.preventDefault()
+    console.log(gon.current_user)
     $("#dialog-confirm").dialog
       resizable: false
       height: 180

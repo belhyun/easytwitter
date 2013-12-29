@@ -1,12 +1,16 @@
+<%if current_user %>
 <div class="dashboard white-background">
   <div class="mini-profile">
     <div class="profile-summary">
       <div class="content">
-        <span class="user-image">
-          <%=image_tag("")%>
-        </span>
-        <span class="user-desc"></span>
+          <span class="user-image">
+            <%=image_tag(current_user[:image])%>
+          </span>
+          <span class="user-desc">
+            <%=current_user[:screen_name] %>
+          </span>
       </div>
     </div>
   </div>
 </div>
+<%end%>
