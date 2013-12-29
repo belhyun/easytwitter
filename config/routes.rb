@@ -23,6 +23,10 @@ Mifd::Application.routes.draw do
   end
 
   delete '/api/v1/user_tweets/:tweet_uuid' => 'api/v1/user_tweets#destroy'
+
+  get 'auth/:provider/callback', to: 'sessions#create'
+  get 'auth/failure', to: redirect('/')
+  get 'signout', to: 'sessions#destroy', as: 'signout'
   root to: 'tweets#index'
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

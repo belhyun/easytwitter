@@ -4,6 +4,7 @@ class User
   field :name, type: String
   field :screen_name, type: String
   field :image, type:String
+  field :provider, type:String
   has_many :tweets, autosave: true
  
   def self.save(timeline)
