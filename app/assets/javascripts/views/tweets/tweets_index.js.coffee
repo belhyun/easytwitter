@@ -14,7 +14,7 @@ class Mifd.Views.TweetsIndex extends Backbone.View
       modal: true
       buttons:
         "Login": ->
-          $(this).dialog "close"
+          location.href = "/auth/twitter"
 
         Cancel: ->
           $(this).dialog "close"

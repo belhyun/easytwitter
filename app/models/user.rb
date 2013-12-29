@@ -6,6 +6,7 @@ class User
   field :image, type:String
   field :provider, type:String
   has_many :tweets, autosave: true
+  scope :exists, ->(uuid){where(uuid: uuid)}
  
   def self.save(timeline)
     if !User.where(uuid: timeline.user.id).exists?
@@ -28,5 +29,10 @@ class User
     else
       Tweet.where(uuid: timeline.id).update(score: timeline.retweet_count+timeline.favorite_count)
     end
+  end
+
+  def self.from_omniauth(auth)
+    user = User.find_or_create_by({uuid: auth[:uid], name: "@#{auth[:info][:name]}", image: auth[:info][:image], 
+    screen_name: auth[:info][:nickname]})
   end
 end
