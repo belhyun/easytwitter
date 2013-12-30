@@ -8,15 +8,16 @@ class Mifd.Views.TweetsIndex extends Backbone.View
 
   retweet: (event) ->
     event.preventDefault()
-    console.log(gon.current_user)
-    $("#dialog-confirm").dialog
-      resizable: false
-      height: 180
-      modal: true
-      buttons:
-        "Login": ->
-          location.href = "/auth/twitter"
-
-        Cancel: ->
-          $(this).dialog "close"
+    if(!gon.current_user)
+      $("#dialog-confirm").dialog
+        resizable: false
+        height: 180
+        modal: true
+        buttons:
+          "Login": ->
+            location.href = "/auth/twitter"
+          Cancel: ->
+            $(this).dialog "close"
+    else
+      alert("Retweet!")
     #console.log(@collection.models[0].get('user'))
