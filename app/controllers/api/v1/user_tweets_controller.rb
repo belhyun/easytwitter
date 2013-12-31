@@ -4,6 +4,7 @@ module Api
       before_action :set_params
       skip_before_filter :verify_authenticity_token
       respond_to :json
+
       def create
         userTweet = UserTweet.save
         render :json => userTweet
@@ -22,7 +23,7 @@ module Api
 
       private 
       def set_params
-        UserTweet.params = params.except(:action, :controller)
+        UserTweet.params = params.except(:action, :controller, :user_tweet)
       end
     end
   end

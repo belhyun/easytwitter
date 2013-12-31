@@ -18,7 +18,8 @@ class Tweet
       tweet.user.attributes.delete("_id")
       tweet.attributes[:user] = tweet.user.attributes
       tweet[:user_tweets] = UserTweet.where(user_desc: user_desc,tweet_id: tweet.id) 
-      UserTweet.where(user_desc: user_desc, tweet_id: tweet.id)
+      tweet[:is_retweet] = is_already_request(tweet, 'R')
+      tweet[:is_favorite] = is_already_request(tweet, 'F')
       tweet.attributes.delete("_id")
       tweet_with_user <<  tweet.attributes
     }
@@ -28,6 +29,10 @@ class Tweet
     hash[:total_page] = (tweets.count / 10.0).ceil
     hash[:total_count] = tweets.count
     hash
+  end
+
+  def self.is_already_request(tweet, type)
+    tweet[:user_tweets].to_a.map{|user_tweet| user_tweet[:type].eql? type}.include?(true)
   end
 
   def self.create_tweet
