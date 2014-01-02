@@ -46,6 +46,15 @@ class UserTweet
     end
   end
 
+  def self.get_client(acc_token, acc_token_secret)
+    Twitter::Client.new do |config|
+      config.consumer_key        = Twitter.consumer_key
+      config.consumer_secret     = Twitter.consumer_secret
+      config.access_token        = acc_token
+      config.access_token_secret = acc_token_secret
+    end
+  end
+
   private
   def self._success
     {:result => 1, :msg => 'success'}
