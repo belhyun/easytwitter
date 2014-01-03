@@ -7,14 +7,18 @@ module Api
       respond_to :json
 
       def create
-        #if session is exists
+        if @client
+          if params[:type] == 'R'
+            @client.retweet(params[:tweet_uuid])
+          else
+            @client.favorite(params[:tweet_uuid])
+          end
+        end
         userTweet = UserTweet.save
         render :json => userTweet
       end
 
       def destroy
-        if current_user
-        end
         res = UserTweet.delete
         render :json => res
       end
@@ -33,7 +37,7 @@ module Api
 
       def set_client
         if user = current_user
-          client = UserTweet.get_client(user[:oauth_token], user[:oauth_token_secret])
+          @client = UserTweet.get_client(user[:oauth_token], user[:oauth_token_secret])
         end
       end
     end

@@ -4,10 +4,9 @@ class Mifd.Views.TweetsIndex extends Backbone.View
   el: 'body .content-main'
 
   events:
-    'click .tweet-actions li .retweet': 'retweet'
+    'click .tweet-actions li .retweet,.tweet-actions li .favorite': 'tweet_action'
 
-  retweet: (event) ->
-    event.preventDefault()
+  is_login: ->
     if(!gon.current_user)
       $("#dialog-confirm").dialog
         resizable: false
@@ -18,28 +17,31 @@ class Mifd.Views.TweetsIndex extends Backbone.View
             location.href = "/auth/twitter"
           Cancel: ->
             $(this).dialog "close"
+  tweet_action: (event) ->
+    event.preventDefault
+    if(!gon.current_user)
+      @.is_login
     else
       index = $(event.currentTarget).parents('.content').parent('li').index()
       tweet = @collection.at(index)
-      if(!tweet.get('is_retweet'))
+      chk = (if ($(event.currentTarget).attr("class") is "retweet") then "is_retweet" else "is_favorite")
+      if(!tweet.get(chk))
         user_tweet = new Mifd.Models.UserTweet(
           user_desc: gon.current_user.screen_name
-          type: 'R'
-          tweet_uuid:tweet.get('uuid') 
+          type:(if $(event.currentTarget).attr("class") is "retweet" then "R" else "F")
+          tweet_uuid:tweet.get('uuid')
         )
         user_tweet.save null,
           success: (model,response) ->
             if(Number(response.result))
-              tweet.set 
-                is_retweet: true
+              if chk == 'is_retweet'
+                tweet.set
+                  'is_retweet': true
+              else
+                tweet.set
+                 'is_favorite': true
               alert 'success'
             else
               alert response.msg
        else
-        alert 'already retweet'
-      #index = $(event.currentTarget).parents('.content').parent('li').index()
-      #console.log(@collection.at(index).get('uuid'))
-      #current user name : console.log(gon.current_user.screen_name)
-      #type : R
-      #console.log(@collection.models[0].get('user'))
-      #console.log($(event.currentTarget).parents('.content').parent('li').index())
+        alert 'already request'
