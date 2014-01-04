@@ -9,3 +9,7 @@ window.Mifd =
 
 $(document).ready ->
   Mifd.initialize()
+
+$(document).on 'page:load', ->
+  Backbone.history.stop()
+  Mifd.initialize()

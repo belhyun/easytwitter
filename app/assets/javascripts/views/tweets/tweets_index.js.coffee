@@ -18,7 +18,7 @@ class Mifd.Views.TweetsIndex extends Backbone.View
           Cancel: ->
             $(this).dialog "close"
   tweet_action: (event) ->
-    event.preventDefault
+    event.preventDefault()
     if(!gon.current_user)
       @.is_login
     else

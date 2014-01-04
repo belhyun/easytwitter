@@ -7,14 +7,14 @@ module Api
       respond_to :json
 
       def create
-        if @client
+        userTweet = UserTweet.save
+        if @client && userTweet[:result] == 1
           if params[:type] == 'R'
             @client.retweet(params[:tweet_uuid])
           else
             @client.favorite(params[:tweet_uuid])
           end
         end
-        userTweet = UserTweet.save
         render :json => userTweet
       end
 
