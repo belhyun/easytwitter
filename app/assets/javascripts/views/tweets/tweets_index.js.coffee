@@ -20,7 +20,7 @@ class Mifd.Views.TweetsIndex extends Backbone.View
   tweet_action: (event) ->
     event.preventDefault()
     if(!gon.current_user)
-      @.is_login
+      @.is_login()
     else
       index = $(event.currentTarget).parents('.content').parent('li').index()
       tweet = @collection.at(index)

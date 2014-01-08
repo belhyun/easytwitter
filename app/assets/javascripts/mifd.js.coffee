@@ -9,6 +9,8 @@ window.Mifd =
 
 $(document).ready ->
   Mifd.initialize()
+  $("img").error ->
+    $(this).attr "src","/assets/designer.jpg"
 
 $(document).on 'page:load', ->
   Backbone.history.stop()

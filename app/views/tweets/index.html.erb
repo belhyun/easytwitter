@@ -22,7 +22,7 @@
             </div>
             <div class="tweet">
               <div class="name">
-              <%= tweet[:text] %>
+                <%=tweet[:text].sub(/(https?:\/\/([-\w\.]+)+(:\d+)?(\/([\w\/_\.]*(\?\S+)?)?)?)/){|s|"<a href=#{s}>#{s}</a>"}.html_safe%>
               </div>
             </div>
             <%= render partial: "tweets/footer", :locals => {:tweet => tweet }%>
