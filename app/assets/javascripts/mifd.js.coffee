@@ -6,11 +6,11 @@ window.Mifd =
   initialize: -> 
     new Mifd.Routers.Tweets
     Backbone.history.start()
+    $("img").error ->
+      $(this).attr "src","/assets/designer.jpg"
 
 $(document).ready ->
   Mifd.initialize()
-  $("img").error ->
-    $(this).attr "src","/assets/designer.jpg"
 
 $(document).on 'page:load', ->
   Backbone.history.stop()
