@@ -17,6 +17,29 @@ class Mifd.Views.TweetsIndex extends Backbone.View
             location.href = "/auth/twitter"
           Cancel: ->
             $(this).dialog "close"
+
+  already_request: ->
+    $("#dialog-already").dialog
+        resizable: false
+        height: 180
+        modal: true
+        buttons:
+          "Ok": ->
+            $(this).dialog "close"
+          Cancel: ->
+            $(this).dialog "close"
+
+  success: ->
+    $("#dialog-success").dialog
+        resizable: false
+        height: 180
+        modal: true
+        buttons:
+          "Ok": ->
+            $(this).dialog "close"
+          Cancel: ->
+            $(this).dialog "close"
+
   tweet_action: (event) ->
     event.preventDefault()
     if(!gon.current_user)
@@ -42,6 +65,6 @@ class Mifd.Views.TweetsIndex extends Backbone.View
                  'is_favorite': true
               alert 'success'
             else
-              alert response.msg
+              @.already_request()
        else
-        alert 'already request'
+         @.already_request()

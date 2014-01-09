@@ -3,7 +3,7 @@ body{
   display:block;
 
   .topbar{
-    background-color: yellow;
+    background-color: #252525;
     border: 1px solid;
     position: fixed;
     top:0;
@@ -20,6 +20,16 @@ body{
     .container{
       width:865px;
       text-align:center;
+
+      .brand{
+        float:left;
+        height:40px;
+        margin-left: -50px;
+        img{
+          display:block;
+          height:100%;
+        }
+      }
     }
 
     [role=navigation]{
