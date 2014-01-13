@@ -6,42 +6,29 @@ class Mifd.Views.TweetsIndex extends Backbone.View
   events:
     'click .tweet-actions li .retweet,.tweet-actions li .favorite': 'tweet_action'
 
+  mifd_dialog: (id, ok, cancel) ->
+    $(id).dialog
+      resizable: false
+      height: 180
+      modal: true
+      buttons:
+        Ok: ->
+          ok $(this)
+        Cancel: ->
+          $(this).dialog "close"
+
   is_login: ->
-    if(!gon.current_user)
-      $("#dialog-confirm").dialog
-        resizable: false
-        height: 180
-        modal: true
-        buttons:
-          "Login": ->
-            location.href = "/auth/twitter"
-          Cancel: ->
-            $(this).dialog "close"
+    @.mifd_dialog "#dialog-confirm",(->
+      location.href = "/auth/twitter"
+    )
 
   already_request: ->
-    $("#dialog-already").dialog
-        resizable: false
-        height: 180
-        modal: true
-        buttons:
-          "Ok": ->
-            $(this).dialog "close"
-          Cancel: ->
-            $(this).dialog "close"
-
-  success: ->
-    $("#dialog-success").dialog
-        resizable: false
-        height: 180
-        modal: true
-        buttons:
-          "Ok": ->
-            $(this).dialog "close"
-          Cancel: ->
-            $(this).dialog "close"
+    @.mifd_dialog "#dialog-already",(that)->
+      that.dialog.call that , "close"
 
   tweet_action: (event) ->
     event.preventDefault()
+    that = this
     if(!gon.current_user)
       @.is_login()
     else
@@ -63,7 +50,8 @@ class Mifd.Views.TweetsIndex extends Backbone.View
               else
                 tweet.set
                  'is_favorite': true
-              alert 'success'
+              that.mifd_dialog "#dialog-success",(that)->
+                that.dialog.call that , "close"
             else
               @.already_request()
        else
