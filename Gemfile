@@ -40,7 +40,11 @@ gem 'mongoid', git: 'https://github.com/mongoid/mongoid.git'
 gem 'kaminari'
 
 gem 'rspec-rails', '~> 3.0.0.beta'
-
+group :test do
+  gem "factory_girl_rails"
+  gem "capybara"
+  gem "guard-rspec"
+end
 gem 'whenever'
 gem 'rails_best_practices'
 gem 'backbone-on-rails'

@@ -1,1 +1,1 @@
-p File.expand_path("../backbone_on_rails", __FILE__)
+p %w(underscore backbone)
