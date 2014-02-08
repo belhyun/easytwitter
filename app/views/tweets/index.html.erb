@@ -1,6 +1,7 @@
 <div id="main">
   <%= render partial: "tweets/dashboard" %>
-  <div class="content-main white-background" role="main">
+  <%= render partial: "tweets/categories" %>
+  <div class="content-main white-background content-border" role="main">
     <div class="content-header">
       <div class="header-inner">
         <h2>Tweets</h2>
@@ -32,5 +33,6 @@
       </ul>
     </div>
   </div>
-  <%= paginate @tweets %>
 </div>
+<%= paginate @tweets %>
+

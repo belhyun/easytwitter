@@ -8,6 +8,7 @@ class Tweet
   field :score, type: Integer
   scope :mifd_rank, order_by("score DESC")
   has_many :user_tweets, autosave: true
+  embeds_one :category
   belongs_to :user
   scope :tweet_uuid, ->(tweet_uuid){where(tweet_uuid: tweet_uuid)}
 
@@ -36,25 +37,25 @@ class Tweet
   end
 
   def self.create_tweet
-    @result = Array.new
-    hash = Hash.new
-    Rails.application.config.mifd_designers.each do |designer|
-      Twitter.user_timeline(designer, :count => 10).each do |timeline|
-        @timeline
-        if timeline.in_reply_to_status_id.nil?
-          hash[:created_at] = timeline.created_at
-          hash[:text] = timeline.text
-          hash[:retweet_count] = timeline.retweet_count
-          hash[:favorite_count] = timeline.favorite_count
-          hash[:tweet_id] = timeline.id
-          hash[:user] = Hash.new
-          hash[:user][:user_id] = timeline.user.id
-          hash[:user][:user_name] = timeline.user.name
-          hash[:user][:screen_name] = timeline.user.screen_name
-          hash[:user][:image] = timeline.user.profile_image_url;
-          User.save(timeline)
-          @result << hash
-          hash = Hash.new
+    Rails.application.config.tweet_user.each do |category, tweet_users|
+      tweet_users.each do |tweet_user|
+        Twitter.user_timeline(tweet_user, :count => 10).each do |timeline|
+          if timeline.in_reply_to_status_id.nil?
+            user = User.save(timeline)
+            tweet = Tweet.new(
+                :created_at => timeline.created_at,
+                :text => timeline.text,
+                :retweet_count => timeline.retweet_count,
+                :favorite_count => timeline.favorite_count,
+                :score => timeline.retweet_count+timeline.favorite_count,
+                :uuid => timeline.id)
+            tweet.category = Category.new(name: category.to_s)
+            if !Tweet.where(uuid: timeline.id).exists?
+              user.tweets.push(tweet)
+            else
+              Tweet.where(uuid: timeline.id).update(score: timeline.retweet_count+timeline.favorite_count)
+            end
+          end
         end
       end
     end

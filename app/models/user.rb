@@ -20,18 +20,6 @@ class User
     else
       user = User.find_by(uuid: timeline.user.id)
     end
-
-    if !Tweet.where(uuid: timeline.id).exists?
-      user.tweets.build(:created_at => timeline.created_at,
-                        :text => timeline.text,
-                        :retweet_count => timeline.retweet_count,
-                        :favorite_count => timeline.favorite_count,
-                        :score => timeline.retweet_count+timeline.favorite_count,
-                        :uuid => timeline.id)
-      user.save
-    else
-      Tweet.where(uuid: timeline.id).update(score: timeline.retweet_count+timeline.favorite_count)
-    end
   end
 
   def self.from_omniauth(auth)

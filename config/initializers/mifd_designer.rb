@@ -1,1 +1,5 @@
-Mifd::Application.config.mifd_designers = ['ilovehye', 'i00111','hmmmmssss', 'yoon7002', 'abduzeedo','larissameek','adellecharles','problogdesign','danielmall','arronlock','emilychang','JohnnyCupcakes','siahdesign','pinceladasdaweb','vpieters','chriswallace','dcurtis','swissmiss','justcreative','imjustcreative ','DavidAirey','Aisleone','debbiemillman','fudgegraphics','chadengle']
+Mifd::Application.config.tweet_user = {
+  :design => ['ilovehye', 'i00111','hmmmmssss', 'yoon7002'],
+  :sports => ['Yunaaaa']
+}
+
