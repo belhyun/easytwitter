@@ -1,9 +1,9 @@
 <div id="tweet-category" class="white-background content-border">
   <ul>
-    <li>category</li>
-    <li>category</li>
-    <li>category</li>
-    <li>category</li>
-    <li>category</li>
+    <%@categories.each do |category| %>
+      <li>
+        <%=category.name.to_s%>
+      </li>
+    <%end%>
   </ul>
 </div>

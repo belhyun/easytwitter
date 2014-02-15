@@ -1,3 +1,17 @@
-development: 
+defaults: &defaults
+  tweet_user: 
+    design: 
+      - 'ilovehye' 
+      - 'i00111'
+      - 'hmmmmssss'
+      - 'yoon7002'
+    sports: 
+      - 'Yunaaaa'
+      - 'mcfc'
+      - 'stamfordthelion'
+      - 'kleague'
   twitter_key: "2wfjnSrPWPSTdqZVlWYyJg"
   twitter_secret: "k5iqKtaLyZlnOcVJKg5VrdSTOBPYY55ta6nvRoClo"
+
+development:
+  <<: *defaults

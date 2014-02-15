@@ -8,12 +8,12 @@ class Tweet
   field :score, type: Integer
   scope :mifd_rank, order_by("score DESC")
   has_many :user_tweets, autosave: true
-  embeds_one :category
+  belongs_to :category
   belongs_to :user
   scope :tweet_uuid, ->(tweet_uuid){where(tweet_uuid: tweet_uuid)}
 
   def self.rank(cur_page, user_desc)
-    tweets = Tweet.includes(:user).mifd_rank.where(:created_at.gte => Date.today-1)
+    tweets = Tweet.includes(:user).mifd_rank.where(:created_at.gte => Date.today-100)
     tweets = tweets.each_with_object([]){|tweet, tweet_with_user|
       tweet.attributes.delete("user_id")
       tweet.user.attributes.delete("_id")
@@ -37,7 +37,8 @@ class Tweet
   end
 
   def self.create_tweet
-    Rails.application.config.tweet_user.each do |category, tweet_users|
+    APP_CONFIG['tweet_user'].each do |category, tweet_users|
+      category = Category.find_or_create_by(name: category.to_s)
       tweet_users.each do |tweet_user|
         Twitter.user_timeline(tweet_user, :count => 10).each do |timeline|
           if timeline.in_reply_to_status_id.nil?
@@ -49,12 +50,13 @@ class Tweet
                 :favorite_count => timeline.favorite_count,
                 :score => timeline.retweet_count+timeline.favorite_count,
                 :uuid => timeline.id)
-            tweet.category = Category.new(name: category.to_s)
             if !Tweet.where(uuid: timeline.id).exists?
               user.tweets.push(tweet)
+              category.tweets << tweet
             else
               Tweet.where(uuid: timeline.id).update(score: timeline.retweet_count+timeline.favorite_count)
             end
+            user.save
           end
         end
       end
