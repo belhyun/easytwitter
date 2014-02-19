@@ -1,15 +1,19 @@
 defaults: &defaults
   tweet_user: 
-    design: 
+    Design: 
       - 'ilovehye' 
       - 'i00111'
       - 'hmmmmssss'
       - 'yoon7002'
-    sports: 
+    Sports: 
       - 'Yunaaaa'
       - 'mcfc'
       - 'stamfordthelion'
       - 'kleague'
+    IT:
+      - 'xguru'
+    Politics:
+      - 'ssaribi'
   twitter_key: "2wfjnSrPWPSTdqZVlWYyJg"
   twitter_secret: "k5iqKtaLyZlnOcVJKg5VrdSTOBPYY55ta6nvRoClo"
 

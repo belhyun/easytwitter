@@ -37,8 +37,8 @@ class Tweet
   end
 
   def self.create_tweet
-    APP_CONFIG['tweet_user'].each do |category, tweet_users|
-      category = Category.find_or_create_by(name: category.to_s)
+    APP_CONFIG['tweet_user'].each_with_index do |(category, tweet_users), idx|
+      category = Category.find_or_create_by(name: category.to_s, id: idx+1)
       tweet_users.each do |tweet_user|
         Twitter.user_timeline(tweet_user, :count => 10).each do |timeline|
           if timeline.in_reply_to_status_id.nil?

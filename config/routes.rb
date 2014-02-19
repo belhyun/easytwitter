@@ -10,7 +10,8 @@ Mifd::Application.routes.draw do
     end
   end
 =end
-  #resource :tweets
+  resources :categories
+
   namespace :api do
     namespace :v1 do
       resources :tweets do
