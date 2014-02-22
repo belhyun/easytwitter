@@ -13,7 +13,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery.ui.dialog
-//= require turbolinks
 //= require underscore
 //= require backbone
 //= require mifd
