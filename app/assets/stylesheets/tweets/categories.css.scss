@@ -3,5 +3,17 @@
     width:25%;
     float:left;
     margin-top: 30px;
+
+    #category-list{
+      padding:15px 15px 15px 5px;
+
+      li{
+        a{
+          text-decoration: none;
+          color: #333333;
+        }
+        padding:5px;
+      }
+    }
   }
 }

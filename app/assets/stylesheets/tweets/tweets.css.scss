@@ -32,16 +32,19 @@
        display:inline-block;
        padding: 0 0 0 27px;
        width:100%;
-      .apple{
-        display:inline-block;
-        margin-top: -25px;
-        img.store{
-          display:block;
-          width:320px;
-          height:82px;
+       //overflow:hidden;
+       img{
+         display:block;
+       }
+       #market-image{
+        float:right;
+        .apple{
+         display:inline-block;
+         margin-top: -25px;
+        }
+        .android{
         }
       }
-
       .available{
         color: #e05c5d;
         margin:12px 72px 0 0;
@@ -99,17 +102,6 @@
     margin: 30px auto 0px;
     border-radius: 6px;
     float:right;
-    .content-header{
-      border-bottom: 1px solid #e8e8e8;
-
-      .header-inner{
-        padding: 5px;
-
-        h2{
-          padding-left:5px;
-        }
-      }
-    }
 
     .content-tweet{
       list-style:none;

@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   helper_method :current_user
   before_action :set_current_user
+  before_action :set_categories
 
   def current_user
     @current_user ||= session[:user] if session[:user]
@@ -11,5 +12,9 @@ class ApplicationController < ActionController::Base
 
   def set_current_user
     gon.current_user = current_user unless @current_user else false
+  end
+
+  def set_categories
+    @categories = Category.all 
   end
 end
