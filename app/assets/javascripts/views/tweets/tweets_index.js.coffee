@@ -41,8 +41,10 @@ class Mifd.Views.TweetsIndex extends Backbone.View
           type:(if $(event.currentTarget).attr("class") is "retweet" then "R" else "F")
           tweet_uuid:tweet.get('uuid')
         )
+        $("#spinner,#modal").css("display","block")
         user_tweet.save null,
           success: (model,response) ->
+            $("#spinner,#modal").css("display","none")
             if(Number(response.result))
               if chk == 'is_retweet'
                 tweet.set
@@ -55,4 +57,5 @@ class Mifd.Views.TweetsIndex extends Backbone.View
             else
               @.already_request()
        else
+         $("#spinner,#modal").css("display","none")
          @.already_request()
