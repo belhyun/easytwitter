@@ -7,8 +7,16 @@
         <div role="navigation">
           <ul class="nav">
             <li id="global-nav-home" class="home">
+              <%= link_to root_path do %>
+                <%= image_tag image_path("home.png")%>
+              <% end %>
             </li>
             <li id="global-nav-me">
+              <% if !current_user %>
+                <%= link_to "/auth/twitter" do %>
+                  <%= image_tag image_path("twitter-login.png")%>
+                <% end %>
+              <% end %>
             </li>
           </ul>
         </div>

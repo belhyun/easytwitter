@@ -1,19 +1,42 @@
 defaults: &defaults
   tweet_user: 
-    Design: 
-      - 'ilovehye' 
-      - 'i00111'
-      - 'hmmmmssss'
-      - 'yoon7002'
-    Sports: 
-      - 'Yunaaaa'
-      - 'mcfc'
-      - 'stamfordthelion'
-      - 'kleague'
-    IT:
-      - 'xguru'
-    Politics:
-      - 'ssaribi'
+    음악&공연:
+      - 'MnetKR'
+      - 'KBSMusicBank'
+      - 'CJMusicLive'
+      - 'Yoonmirae'
+      - 'jucklee'
+    연예&오락:
+      - 'BoAkwon'
+      - 'psy_oppa'
+    영화&드라마:
+      - 'ssinz'
+      - 'CJ_CGV'
+    방송&언론:
+      - 'SBS8news'
+      - 'YTN24'
+      - 'kbsnewstweet'
+    스포츠:
+      - 'kbsnewstweet'
+      - 'yeonjae0528'
+    여행:
+      - 'Kor_Visitkorea'
+      - 'korail1899'
+    패션&쇼핑:
+      - 'OnStyle_twt'
+      - 'SSG_Main'
+    정치&정부:
+      - 'cheolsoo0919'
+      - 'GH_PARK'
+    경영&경제:
+      - 'samsung'
+      - 'seri_org'
+    문화&책&작가:
+      - 'kangfull74'
+      - 'congjee'
+    미술&디자인&사진:
+      - 'MMCAKOREA'
+      - 'zosun_hi'
   twitter_key: "2wfjnSrPWPSTdqZVlWYyJg"
   twitter_secret: "k5iqKtaLyZlnOcVJKg5VrdSTOBPYY55ta6nvRoClo"
 

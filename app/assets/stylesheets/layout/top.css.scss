@@ -3,8 +3,8 @@ body{
   display:block;
 
   .topbar{
-    background-color: #252525;
-    border: 1px solid;
+    background-color: #fff;
+    border: 1px solid rgba(0,0,0,0.15);
     position: fixed;
     top:0;
     right:0;
@@ -46,15 +46,27 @@ body{
   .nav{
     text-align:center;
     float:left;
-
+    #global-nav-home{
+      img{
+        width:37px;
+        height:37px;
+      }
+    }
+    #global-nav-me{
+      margin-left: 25px;
+      img{
+      }
+    }
     >li{
       float:left;
       >a{
+        /*
         display:block;
         font-weight:bold;
         line-height:1;
         height:12px;
         padding:13px 12px 15px;
+        */
       }
     }
   }
