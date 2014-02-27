@@ -6,6 +6,29 @@ class Mifd.Views.TweetsIndex extends Backbone.View
   events:
     'click .tweet-actions li .retweet,.tweet-actions li .favorite': 'tweet_action'
 
+  initialize: ->
+    $("img").error ->
+      $(this).attr "src","/assets/designer.jpg"
+    (enableSelectBoxes = ->
+      $("div.selectBox").each ->
+        $(this).children("span.selected").html $(this).children("div.selectOptions").children("span.selectOption:first").html()
+        $(this).attr "value", $(this).children("div.selectOptions").children("span.selectOption:first").attr("value")
+        $(this).children("span.selected,span.selectArrow").click ->
+          if $(this).parent().children("div.selectOptions").css("display") is "none"
+            $(this).parent().children("div.selectOptions").css "display", "block"
+          else
+            $(this).parent().children("div.selectOptions").css "display", "none"
+          return
+        $(this).find("span.selectOption").click ->
+          $(this).parent().css "display", "none"
+          $(this).closest("div.selectBox").attr "value", $(this).attr("value")
+          $(this).parent().siblings("span.selected").html $(this).html()
+          $(".content-main .content-header .header-inner").removeAttr("style")
+          return
+        return
+      return
+    )()
+
   mifd_dialog: (id, ok, cancel) ->
     $(id).dialog
       resizable: false

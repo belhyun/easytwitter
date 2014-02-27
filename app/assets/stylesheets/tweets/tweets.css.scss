@@ -45,12 +45,16 @@
     margin: 30px auto 0px;
     border-radius: 6px;
     float:right;
-
+    .content-header{
+      .text{
+        //float:left;
+      }
+    }
     .content-tweet{
       list-style:none;
       margin-left:0;
       position:relative;
-
+      clear:both;
       .tweet-items{
         line-height:25px;
         >li{
