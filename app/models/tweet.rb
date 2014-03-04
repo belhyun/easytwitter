@@ -1,4 +1,9 @@
 class Tweet
+  class << self
+    def set_user_desc=(user_desc)
+      @user_desc  = user_desc
+    end
+  end
   include Mongoid::Document
   field :uuid, type: String
   field :text, type: String
@@ -11,25 +16,30 @@ class Tweet
   belongs_to :category
   belongs_to :user
   scope :tweet_uuid, ->(tweet_uuid){where(tweet_uuid: tweet_uuid)}
-
-  def self.rank(cur_page, user_desc)
-    tweets = Tweet.includes(:user).mifd_rank.where(:created_at.gte => Date.today-100)
-    tweets = tweets.each_with_object([]){|tweet, tweet_with_user|
+  scope :today, where(:created_at.gte => Date.today-100)
+  def self.tweet_with_user(tweets)
+    tweets.each_with_object([]){|tweet, tweet_with_user|
       tweet.attributes.delete("user_id")
       tweet.user.attributes.delete("_id")
       tweet.attributes[:user] = tweet.user.attributes
-      tweet[:user_tweets] = UserTweet.where(user_desc: user_desc,tweet_id: tweet.id) 
+      tweet[:user_tweets] = UserTweet.where(user_desc: @user_desc,tweet_id: tweet.id) 
       tweet[:is_retweet] = is_already_request(tweet, 'R')
       tweet[:is_favorite] = is_already_request(tweet, 'F')
       tweet.attributes.delete("_id")
       tweet_with_user <<  tweet.attributes
     }
+  end
 
-    hash = Hash.new
-    hash[:tweets] = tweets
-    hash[:total_page] = (tweets.count / 10.0).ceil
-    hash[:total_count] = tweets.count
-    hash
+  def self.people
+    tweets = Tweet.tweet_with_user(Tweet.includes(:user).today.asc(:name))
+  end
+
+  def self.recent
+    tweets = Tweet.tweet_with_user(Tweet.includes(:user).today.desc(:created_at))
+  end
+
+  def self.rank
+    tweets = Tweet.tweet_with_user(Tweet.includes(:user).mifd_rank.today)
   end
 
   def self.is_already_request(tweet, type)

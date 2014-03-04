@@ -9,20 +9,23 @@ class Mifd.Views.TweetsIndex extends Backbone.View
   initialize: ->
     $("img").error ->
       $(this).attr "src","/assets/designer.jpg"
-    (enableSelectBoxes = ->
+    (->
       $("div.selectBox").each ->
-        $(this).children("span.selected").html $(this).children("div.selectOptions").children("span.selectOption:first").html()
-        $(this).attr "value", $(this).children("div.selectOptions").children("span.selectOption:first").attr("value")
-        $(this).children("span.selected,span.selectArrow").click ->
-          if $(this).parent().children("div.selectOptions").css("display") is "none"
-            $(this).parent().children("div.selectOptions").css "display", "block"
+        that = $(this)
+        that.children("span.selected").html that.children("div.selectOptions").find("a:nth-child("+gon.type+") span.selectOption:first").html()
+        that.attr "value", that.children("div.selectOptions").find("a:nth-child("+gon.type+")span.selectOption:first").attr("value")
+        that.children("span.selected,span.selectArrow").click ->
+          that = $(this)
+          if that.parent().children("div.selectOptions").css("display") is "none"
+            that.parent().children("div.selectOptions").css "display", "block"
           else
-            $(this).parent().children("div.selectOptions").css "display", "none"
+            that.parent().children("div.selectOptions").css "display", "none"
           return
-        $(this).find("span.selectOption").click ->
-          $(this).parent().css "display", "none"
-          $(this).closest("div.selectBox").attr "value", $(this).attr("value")
-          $(this).parent().siblings("span.selected").html $(this).html()
+        that.find("span.selectOption").click ->
+          that = $(this)
+          that.parent().css "display", "none"
+          that.closest("div.selectBox").attr "value", that.attr("value")
+          that.parent().siblings("span.selected").html that.html()
           $(".content-main .content-header .header-inner").removeAttr("style")
           return
         return
