@@ -1,0 +1,15 @@
+<div id="sort-section" class='selectBox'>
+  <span class="selected"></span>
+  <span class="selectArrow">&#9660</span>
+  <div class="selectOptions" >
+    <%= link_to (@category) do %>
+      <span class="selectOption" value="Option 1">인기순</span>
+    <% end %>
+    <%= link_to recent_categories_path(@category) do %>
+      <span class="selectOption" value="Option 2">최신순</span>
+    <% end %>
+    <%= link_to people_categories_path(@category) do %>
+      <span class="selectOption" value="Option 3">인물순</span>
+    <% end %>
+  </div>
+</div>

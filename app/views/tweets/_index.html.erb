@@ -1,0 +1,38 @@
+<div id="main">
+  <%= render partial: "layouts/dashboard" %>
+  <%= render partial: "layouts/categories" %>
+  <div class="content-main white-background content-border" role="main">
+    <div class="content-header">
+      <div class="header-inner">
+        <h2 class="text">Tweets</h2>
+        <%= render partial: "layouts/select_box" %>
+      </div>
+    </div>
+    <div class="content-tweet">
+      <ul class="tweet-items">
+        <% tweets.each do |tweet|%>
+          <li>
+          <div class="content">
+            <div class="header">
+              <strong class="name">
+                <%= tweet[:user][:name] %>
+              </strong>
+              <%= image_tag(tweet[:user][:image], alt: "Fail") %> 
+              <span class="date">
+                <%=time_ago_in_words(tweet[:created_at]) %>
+              </span>
+            </div>
+            <div class="tweet">
+              <div class="name">
+                <%=tweet[:text].sub(/(https?:\/\/([-\w\.]+)+(:\d+)?(\/([\w\/_\.]*(\?\S+)?)?)?)/){|s|"<a target='_blank' href=#{s}>#{s}</a>"}.html_safe%>
+              </div>
+            </div>
+            <%= render partial: "layouts/footer", :locals => {:tweet => tweet }%>
+          </div>
+        </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>
+<%= paginate tweets %>
