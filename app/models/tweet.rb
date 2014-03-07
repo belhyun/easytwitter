@@ -7,16 +7,17 @@ class Tweet
   include Mongoid::Document
   field :uuid, type: String
   field :text, type: String
-  field :created_at, type: Date
+  field :created_at, type: DateTime
   field :retweet_count, type: Integer
   field :favorite_count, type: Integer
   field :score, type: Integer
+
   scope :mifd_rank, order_by("score DESC")
   has_many :user_tweets, autosave: true
   belongs_to :category
   belongs_to :user
   scope :tweet_uuid, ->(tweet_uuid){where(tweet_uuid: tweet_uuid)}
-  scope :today, where(:created_at.gte => Date.today-100)
+  scope :today, where(:created_at.gte => Date.today-1)
   def self.tweet_with_user(tweets)
     tweets.each_with_object([]){|tweet, tweet_with_user|
       tweet.attributes.delete("user_id")
@@ -50,25 +51,32 @@ class Tweet
     APP_CONFIG['tweet_user'].each_with_index do |(category, tweet_users), idx|
       category = Category.find_or_create_by(name: category.to_s, id: idx+1)
       tweet_users.each do |tweet_user|
-        Twitter.user_timeline(tweet_user, :count => 10).each do |timeline|
-          if timeline.in_reply_to_status_id.nil?
-            user = User.save(timeline)
-            tweet = Tweet.new(
-                :created_at => timeline.created_at,
-                :text => timeline.text,
-                :retweet_count => timeline.retweet_count,
-                :favorite_count => timeline.favorite_count,
-                :score => timeline.retweet_count+timeline.favorite_count,
-                :uuid => timeline.id)
-            if !Tweet.where(uuid: timeline.id).exists?
-              user.tweets.push(tweet)
-              category.tweets << tweet
-            else
-              Tweet.where(uuid: timeline.id).update(score: timeline.retweet_count+timeline.favorite_count)
-            end
-            user.save
-          end
-        end
+        begin
+          Twitter.user_timeline(tweet_user, :count => 10).each do |timeline|
+            if timeline.in_reply_to_status_id.nil?
+              user = User.save(timeline)
+              p timeline.created_at
+              tweet = Tweet.new(
+                  :created_at => timeline.created_at,
+                  :text => timeline.text,
+                  :retweet_count => timeline.retweet_count,
+                  :favorite_count => timeline.favorite_count,
+                  :score => timeline.retweet_count+timeline.favorite_count,
+                  :uuid => timeline.id)
+              if !Tweet.where(uuid: timeline.id).exists?
+                tweet.save
+                user.tweets.push(tweet)
+                category.tweets.push(tweet)
+              else
+                Tweet.where(uuid: timeline.id).update(score: timeline.retweet_count+timeline.favorite_count)
+              end
+              user.save
+            end#endof if
+          end#endof do
+        rescue Twitter::Error::TooManyRequests => error
+          sleep error.rate_limit.reset_in
+          retry
+        end#end of begin
       end
     end
   end

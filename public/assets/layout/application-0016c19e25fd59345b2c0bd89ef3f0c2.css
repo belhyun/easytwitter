@@ -1,0 +1,22 @@
+@charset "UTF-8";
+body {
+  color: #333;
+  font-size: 14px;
+  line-height: 18px;
+  margin: 0;
+  padding: 0;
+  overflow-y: scroll;
+  background-color: #c0deed;
+  background-repeat: no-repeat;
+  font-family: "맑은고딕", "Malgun Gothic", "나눔고딕","NanumGothic","NanumGothicOTF", "돋움", "dotum", "Helvetica Neue", Helvetica, Arial, sans-serif; }
+  body ul, body ol {
+    margin: 0;
+    padding: 0;
+    list-style: none; }
+  body h2 {
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 20px; }
+  body a {
+    text-decoration: none;
+    color: #0084B4; }

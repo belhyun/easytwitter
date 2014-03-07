@@ -19,7 +19,7 @@
               </strong>
               <%= image_tag(tweet[:user][:image], alt: "Fail") %> 
               <span class="date">
-                <%=time_ago_in_words(tweet[:created_at]) %>
+                <%=time_ago_in_words(tweet[:created_at].localtime) %>
               </span>
             </div>
             <div class="tweet">

@@ -5,17 +5,15 @@
 
 # Example:
 #
-# set :output, "/path/to/my/cron_log.log"
+set :output, "/home/www/rails_app/mifd/log/cron_log.log"
 #
-set :environment, 'development'
-every 3.hours do
+set :environment, 'production'
+every 1.hours do
 #   command "/usr/bin/some_great_command"
-   #runner "Tweet.create_tweet"
+   runner "Tweet.create_tweet"
 #   rake "some:great:rake:task"
 end
 #
 # every 4.days do
 #   runner "AnotherModel.prune_old_records"
 # end
-
-# Learn more: http://github.com/javan/whenever
