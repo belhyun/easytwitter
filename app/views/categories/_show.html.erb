@@ -15,9 +15,11 @@
           <div class="content">
             <div class="header">
               <strong class="name">
-                <%= tweet.user.name %>
+                <%=link_to tweet.user.name, "http://twitter.com/#{tweet.user.screen_name}"%>
               </strong>
-              <%= image_tag(tweet.user.image, alt: "Fail") %> 
+              <%=link_to "http://twitter.com/#{tweet.user.screen_name}" do%>
+                <%= image_tag(tweet.user.image, alt: "Fail") %> 
+              <% end %>
               <span class="date">
                 <%=time_ago_in_words(tweet[:created_at].localtime)%>
               </span>

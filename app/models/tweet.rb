@@ -47,6 +47,10 @@ class Tweet
     tweet[:user_tweets].to_a.map{|user_tweet| user_tweet[:type].eql? type}.include?(true)
   end
 
+  def self.delete_tweet
+   Tweet.where(:created_at.lt => Date.today ).delete 
+  end
+
   def self.create_tweet
     APP_CONFIG['tweet_user'].each_with_index do |(category, tweet_users), idx|
       category = Category.find_or_create_by(name: category.to_s, id: idx+1)
@@ -55,7 +59,6 @@ class Tweet
           Twitter.user_timeline(tweet_user, :count => 10).each do |timeline|
             if timeline.in_reply_to_status_id.nil?
               user = User.save(timeline)
-              p timeline.created_at
               tweet = Tweet.new(
                   :created_at => timeline.created_at,
                   :text => timeline.text,

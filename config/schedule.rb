@@ -10,7 +10,8 @@ set :output, "/home/www/rails_app/mifd/log/cron_log.log"
 set :environment, 'production'
 every 1.hours do
 #   command "/usr/bin/some_great_command"
-   runner "Tweet.create_tweet"
+  runner "Tweet.delete_tweet"
+  runner "Tweet.create_tweet"
 #   rake "some:great:rake:task"
 end
 #
