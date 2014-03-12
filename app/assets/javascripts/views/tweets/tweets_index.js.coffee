@@ -29,17 +29,19 @@ class Mifd.Views.TweetsIndex extends Backbone.View
         return
       return
     )()
-  user_profile: ->
+  user_profile: (event) ->
     $("#spinner,#modal").css("display","block")
+    tweet = @collection.at($(event.currentTarget).parents('.content').parent('li').index())
+    template = _.template("http://easytwitter.co.kr/users/<%= uuid %>")
     Backbone.ajax(
       type:'get'
       dataType: 'html'
-      url: 'http://easytwitter.co.kr/tweets/test'
+      url: template({uuid:tweet.attributes.user.uuid})
       success: (html)->
         $("#spinner,#modal").css("display","none")
         $("<div></div>").html(html).dialog(
           modal:true
-          title:'dialog open'
+          title:'user profile'
           width:600
           height:400
         )
