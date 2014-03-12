@@ -30,10 +30,11 @@ Mifd::Application.routes.draw do
   get 'signout', to: 'sessions#destroy', as: 'signout'
   get 'tweets/recent' => 'tweets#recent', as: 'recent_tweets'
   get 'tweets/people' => 'tweets#people', as: 'people_tweets'
+  get 'tweets/test' => 'tweets#test'
   get 'categories/recent/:id' => 'categories#recent', as: 'recent_categories'
   get 'categories/people/:id' => 'categories#people', as: 'people_categories'
 
-  root to: 'tweets#index'
+  root to: 'tweets#recent'
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

@@ -17,9 +17,7 @@
               <strong class="name">
                 <%=link_to tweet[:user][:name], "http://twitter.com/#{tweet[:user][:screen_name]}"%>
               </strong>
-              <%=link_to "http://twitter.com/#{tweet[:user][:screen_name]}" do%>
-                <%= image_tag(tweet[:user][:image], alt: "Fail") %> 
-              <% end %>
+              <%= image_tag(tweet[:user][:image], alt: "Fail") %> 
               <span class="date">
                 <%=time_ago_in_words(tweet[:created_at].localtime) %>
               </span>

@@ -1,17 +1,21 @@
 class TweetsController < ApplicationController
   before_action :set_user_desc
+  def test
+    render :layout => false
+  end
+
   def index
     gon.tweets = @tweets = Kaminari.paginate_array(Tweet.rank).page(params[:page]).per(10)
     gon.type = 1
   end
 
   def recent
-    @tweets = Kaminari.paginate_array(Tweet.recent).page(params[:page]).per(10)
+    gon.tweets = @tweets = Kaminari.paginate_array(Tweet.recent).page(params[:page]).per(10)
     gon.type = 2
   end
 
   def people
-    @tweets = Kaminari.paginate_array(Tweet.people).page(params[:page]).per(10)
+    gon.tweets = @tweets = Kaminari.paginate_array(Tweet.people).page(params[:page]).per(10)
     gon.type = 3
   end
 
