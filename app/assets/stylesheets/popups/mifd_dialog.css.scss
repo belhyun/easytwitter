@@ -26,3 +26,43 @@
   z-index:1;
   opacity:0.3;
 }
+
+#profile-pop{
+  line-height:30px;
+  > img{
+    display:block;
+    height:330px;
+    width:100%;
+  }
+  #right-side{
+    .profile-image{
+      float:left;
+    }
+    .user-cnt{
+      margin-top:20px;
+      clear:both;
+      li{
+        float:left;
+        margin-right:5px;
+      }
+    }
+    .name{
+      display:inline-block;
+      margin-left:5px;
+      font-size:20px;
+    }
+
+    button{
+      margin-top:20px;
+    }
+  }
+  .recently-tweet{
+    clear:both;
+    border:1px solid;
+    padding:3px;
+  }
+}
+
+.ui-dialog-content{
+  height:auto !important;
+}
