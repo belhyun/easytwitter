@@ -40,6 +40,7 @@
     width:100%;
   }
   #right-side{
+    margin-top:10px;
     .profile-image{
       float:left;
     }
@@ -51,6 +52,14 @@
         float:left;
         margin-right:5px;
         margin-bottom:5px;
+
+        span{
+          color:#8899a6;
+          font-size:15px;
+        }
+        strong{
+          color:#0084B4;
+        }
       }
     }
     .name{
@@ -84,7 +93,6 @@
   }
   .recently-tweet{
     clear:both;
-    border:1px solid;
     padding:3px;
   }
 }

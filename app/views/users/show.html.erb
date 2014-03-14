@@ -1,0 +1,33 @@
+<div id="profile-pop">
+  <%= image_tag (@user.profile_background_image_url) do %>
+  <% end %>
+  <div id="right-side">
+    <div class="profile-image">
+      <%= image_tag @user.profile_image_url%>
+    </div>
+    <div class="name">
+      <%=@user.name%>
+    </div>
+    <ul class="user-cnt">
+      <li><span>Tweets</span><strong> <%=@user.statuses_count%></strong></li>
+      <li><span>Followers</span><strong> <%=@user.followers_count%></strong></li>
+      <li><span>Followings</span><strong> <%=@user.friends_count%></strong></li>
+    </ul>
+    <div class="recently-tweet">
+      <%=@user.status.text.gsub(/(https?:\/\/([-\w\.]+)+(:\d+)?(\/([\w\/_\.]*(\?\S+)?)?)?)/){|s|"<a target='_blank' href=#{s}>#{s}</a>"}.html_safe%>
+    </div>
+    <%= button_tag do %>
+      <%=link_to "프로필 보기", "http://twitter.com/#{@user.screen_name}", :target=>'_blank'%>
+    <% end %>
+    <%= button_tag '팔로잉 하기' %>
+  </div>
+</div>
+<!--
+<div>이름:<%=@user.name%></div>
+<div>트윗갯수:<%=@user.statuses_count%></div>
+<div>팔로워수:<%=@user.followers_count%></div>
+<div>팔로잉수:<%=@user.friends_count%></div>
+<div>최근트윗:<%=@user.status.text%></div>
+<div>프로필 이미지: <%=@user.profile_image_url%></div>
+<div>프로필 백그라운드 이미지: <%=@user.profile_background_image_url%></div>
+-->
