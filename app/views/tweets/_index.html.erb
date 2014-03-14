@@ -5,7 +5,11 @@
     <div class="content-header">
       <div class="header-inner">
         <h2 class="text">Tweets</h2>
-        <%= render partial: "layouts/select_box" %>
+        <% if type.eql? 'category' %>
+          <%= render partial: "layouts/category_select_box" %>
+        <% else %>
+          <%= render partial: "layouts/select_box" %>
+        <% end %>
       </div>
     </div>
     <div class="content-tweet">
@@ -24,7 +28,7 @@
             </div>
             <div class="tweet">
               <div class="name">
-                <%=tweet[:text].sub(/(https?:\/\/([-\w\.]+)+(:\d+)?(\/([\w\/_\.]*(\?\S+)?)?)?)/){|s|"<a target='_blank' href=#{s}>#{s}</a>"}.html_safe%>
+                <%=tweet[:text].gsub(/(https?:\/\/([-\w\.]+)+(:\d+)?(\/([\w\/_\.]*(\?\S+)?)?)?)/){|s|"<a target='_blank' href=#{s}>#{s}</a>"}.html_safe%>
               </div>
             </div>
             <%= render partial: "layouts/footer", :locals => {:tweet => tweet }%>

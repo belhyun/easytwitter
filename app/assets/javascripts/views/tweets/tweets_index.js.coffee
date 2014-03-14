@@ -41,7 +41,7 @@ class Mifd.Views.TweetsIndex extends Backbone.View
         $("#spinner,#modal").css("display","none")
         $("<div></div>").html(html).dialog(
           modal:true
-          title:'user profile'
+          title:'Profile summary'
           width:600
           height:400
         )
