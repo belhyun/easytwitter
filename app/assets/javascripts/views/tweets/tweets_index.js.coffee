@@ -44,6 +44,8 @@ class Mifd.Views.TweetsIndex extends Backbone.View
           title:'Profile summary'
           width:600
           height:400
+          open: ->
+            $("#right-side *").blur()
         )
     )
   mifd_dialog: (id, ok, cancel) ->

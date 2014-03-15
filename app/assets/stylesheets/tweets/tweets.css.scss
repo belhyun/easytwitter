@@ -88,6 +88,29 @@
             display:inline-block;
             float:right;
             margin-top:19px;
+            ul.tweet-cnt{
+              float:left;
+              margin-right:32px;
+              li{
+                border: 1px solid #dddde1;
+                margin-right:5px;
+                .tweet-cnt-top{
+                  font-size:5px;
+                  background-color:#f9f9f9;
+                  padding:5px;
+                  float:left;
+                }
+                .tweet-cnt-bottom{
+                  padding:5px;
+                  color:#fa2020;
+                  float:right;
+                }
+              }
+            }
+            .tweet-actions{
+              margin-top:8px;
+              float:right;
+            }
             ul{
               li{
                 float:left;

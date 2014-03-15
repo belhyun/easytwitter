@@ -33,8 +33,8 @@ Mifd::Application.routes.draw do
   get 'tweets/test' => 'tweets#test'
   get 'categories/recent/:id' => 'categories#recent', as: 'recent_categories'
   get 'categories/people/:id' => 'categories#people', as: 'people_categories'
-
   root to: 'tweets#recent'
+  resources :tweets
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

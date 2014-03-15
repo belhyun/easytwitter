@@ -1,4 +1,22 @@
 <div class="footer">
+  <ul class="tweet-cnt">
+    <li>
+      <div class="tweet-cnt-top">
+        Favorite
+      </div>
+      <div class="tweet-cnt-bottom">
+        <%= tweet[:favorite_count]%>
+      </div>
+    </li>
+    <li>
+      <div class="tweet-cnt-top">
+        Retweet
+      </div>
+      <div class="tweet-cnt-bottom">
+        <%= tweet[:retweet_count]%>
+      </div>
+    </li>
+  </ul>
   <ul class="tweet-actions">
     <li>
     <%= link_to "#", :class => "retweet"  do%>
