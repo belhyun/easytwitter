@@ -16,10 +16,10 @@
     <div class="recently-tweet">
       <%=@user.status.text.gsub(/(https?:\/\/([-\w\.]+)+(:\d+)?(\/([\w\/_\.]*(\?\S+)?)?)?)/){|s|"<a target='_blank' href=#{s}>#{s}</a>"}.html_safe%>
     </div>
-    <%= button_tag do %>
-      <%=link_to "프로필 보기", "http://twitter.com/#{@user.screen_name}", :target=>'_blank'%>
+    <%= button_tag(:class => 'profile') do %>
+      <%=link_to "프로필 보기", "http://twitter.com/#{@user.screen_name}",{:target=>'_blank', :class=>'white'}%>
     <% end %>
-    <%= button_tag '팔로잉 하기' %>
+    <%= button_tag '팔로잉 하기' , {:class => 'follow white'}%>
   </div>
 </div>
 <!--

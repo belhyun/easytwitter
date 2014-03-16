@@ -4,7 +4,7 @@ window.Mifd =
   Views: {}
   Routers: {}
   initialize: -> 
-    new Mifd.Routers.Tweets
+    window.Mifd.Routers.router = new Mifd.Routers.Tweets
     Backbone.history.start()
 $(document).ready ->
   Mifd.initialize()

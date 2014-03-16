@@ -48,6 +48,7 @@ class Mifd.Views.TweetsIndex extends Backbone.View
             $("#right-side *").blur()
         )
     )
+    window.Mifd.Routers.router.profile()
   mifd_dialog: (id, ok, cancel) ->
     $(id).dialog
       resizable: false
