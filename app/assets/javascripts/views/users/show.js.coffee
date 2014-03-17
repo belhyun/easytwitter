@@ -9,5 +9,4 @@ class Mifd.Views.Show extends Backbone.View
         location.href = "/auth/twitter"
         return
     else
-      console.log gon.tweet_user
-      console.log gon.current_user 
+      console.log @.collection
