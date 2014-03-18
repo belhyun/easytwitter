@@ -45,8 +45,8 @@ class Mifd.Views.TweetsIndex extends Backbone.View
           width:600
           height:400
           open: ->
-            window.Mifd.Routers.router.profile()
             $("#right-side *").blur()
+            window.Mifd.Routers.router.profile()
         )
     )
   mifd_dialog: (id, ok, cancel) ->

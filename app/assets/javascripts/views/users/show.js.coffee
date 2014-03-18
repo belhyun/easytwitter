@@ -1,5 +1,5 @@
 class Mifd.Views.Show extends Backbone.View
-  el: 'body'
+  el: '#profile-pop'
   initialize: ->
   events:
     'click #right-side>button.follow': 'follow'
@@ -9,4 +9,4 @@ class Mifd.Views.Show extends Backbone.View
         location.href = "/auth/twitter"
         return
     else
-      console.log @.collection
+      @.collection.follow()

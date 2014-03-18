@@ -24,7 +24,11 @@ Mifd::Application.routes.draw do
   end
 
   delete '/api/v1/user_tweets/:tweet_uuid' => 'api/v1/user_tweets#destroy'
-  resources :users
+  resources :users do
+    collection do
+      post 'follow'
+    end
+  end
   get 'auth/:provider/callback', to: 'sessions#create'
   get 'auth/failure', to: redirect('/')
   get 'signout', to: 'sessions#destroy', as: 'signout'
