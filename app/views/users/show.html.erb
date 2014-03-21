@@ -19,7 +19,9 @@
     <%= button_tag(:class => 'profile') do %>
       <%=link_to "프로필 보기", "http://twitter.com/#{@user.screen_name}",{:target=>'_blank', :class=>'white'}%>
     <% end %>
-    <%= button_tag '팔로잉 하기' , {:class => 'follow white'}%>
+    <% if !@user.following %>
+      <%= button_tag '팔로잉 하기' , {:class => 'follow white'}%>
+    <% end %>
   </div>
 </div>
 <!--

@@ -55,6 +55,9 @@ gem 'jquery-ui-rails'
 gem 'unicorn'
 gem 'newrelic_rpm'
 gem 'thin'
+gem 'twitter-bootstrap-rails'
+gem 'less-rails'
+gem 'jquery_mobile_rails'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

@@ -9,6 +9,11 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
- *= require_tree .
  *= require jquery.ui.dialog
+ *= require bootstrap_and_overrides
+ *= require_directory ./core
+ *= require_directory ./layout
+ *= require_directory ./popups
+ *= require_directory ./tweets
+ *= require_directory ./mobile
 */

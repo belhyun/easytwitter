@@ -3,6 +3,8 @@ class UserTweet
     attr_accessor :params
   end
   include Mongoid::Document
+  include JsonHelper
+
   field :user_desc, type:String
   field :type, type:String
   field :tweet_uuid,  type:String
@@ -31,37 +33,18 @@ class UserTweet
     if !criteria.exists?
       tweet = Tweet.find_by(uuid: params[:tweet_uuid])
       tweet.user_tweets.create(Hash[params])
-      _success
+      JsonHelper.res_success
     else
-      _fail('already requested')
+      JsonHelper.res_fail('already requested')
     end
   end
 
   def self.delete
     if criteria.exists?
        criteria.delete
-      _success
+      JsonHelper.res_success
     else
-      _fail('resource not exists')
+      JsonHelper.res_fail('resource not exists')
     end
-  end
-
-  def self.get_client(acc_token, acc_token_secret)
-    Twitter::Client.new do |config|
-      config.consumer_key        = Twitter.consumer_key
-      config.consumer_secret     = Twitter.consumer_secret
-      config.access_token        = acc_token
-      config.access_token_secret = acc_token_secret
-    end
-  end
-
-  private
-  def self._success
-    {:result => 1, :msg => 'success'}
-  end
-  
-  private
-  def self._fail(msg)
-    {:result => 0, :msg => msg}
   end
 end

@@ -20,6 +20,11 @@ Mifd::Application.routes.draw do
         end
       end
       resources :user_tweets, only: [:create] 
+      resources :users do
+        collection do
+          post 'follow'
+        end
+      end
     end
   end
 
