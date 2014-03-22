@@ -1,1 +1,18 @@
-<h1>멋지게 준비중</h1>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>이지 트위터</title>
+  <%= include_gon %>
+  <%= favicon_link_tag 'favicon.png', type: 'image/png'%>
+  <%= stylesheet_link_tag    "application.mobile", media: "all"%>
+  <%= javascript_include_tag "application.mobile"%>
+  <%= csrf_meta_tags %>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body class="ui-mobile-viewport ui-overlay-d">
+  <div data-role="page" id="main-page" data-theme="a" data-url="main-page">
+    <%= render :partial => 'mobile/layouts/header' %>
+    <%= yield %>
+  </div>
+</body>
+</html>
