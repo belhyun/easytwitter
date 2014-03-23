@@ -12,7 +12,10 @@
 <body class="ui-mobile-viewport ui-overlay-d">
   <div data-role="page" id="main-page" data-theme="a" data-url="main-page">
     <%= render :partial => 'mobile/layouts/header' %>
-    <%= yield %>
+    <div data-role="content">
+     <%= yield %>
+    </div>
+    <%= render :partial => 'mobile/layouts/left_panel' %>
   </div>
 </body>
 </html>

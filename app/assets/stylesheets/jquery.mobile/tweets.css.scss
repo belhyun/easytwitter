@@ -1,0 +1,21 @@
+.ui-listview > .ui-li-has-thumb > .ui-btn, .ui-listview > .ui-li-static.ui-li-has-thumb{
+  padding-left:4.25em;
+}
+.ui-listview > .ui-li-static{
+  padding:0.3em 1em;
+}
+
+body #tweets{
+  li{
+    .text{
+      white-space:normal;
+      line-height:1.563em;
+    }
+    .time{
+      float:right;
+      color:#999;
+      text-decoration:none;
+      padding-top:i0.625em;
+    }
+  }
+}

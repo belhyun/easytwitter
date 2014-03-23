@@ -1,0 +1,11 @@
+<ul data-role="listview" data-inset="true" data-theme="d" data-divider-theme="e" data-count-theme="b">
+  <li data-role="list-divider">
+    Category
+  </li>
+  <%@categories.each do |category| %>
+    <li>
+      <%= link_to category.name, category_path(category) %>
+    </li>
+<%end%>
+</ul>
+

@@ -12,5 +12,12 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require ./jquery.mobile/config
 //= require jquery.mobile
-//= require_tree ./jquery.mobile
+//= require underscore
+//= require backbone
+//= require ./jquery.mobile/mifd
+//= require_tree ./jquery.mobile/models
+//= require_tree ./jquery.mobile/collections
+//= require_tree ./jquery.mobile/views
+//= require_tree ./jquery.mobile/routers
