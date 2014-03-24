@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>이지 트위터</title>
+  <%= include_gon %>
+  <%= favicon_link_tag 'favicon.png', type: 'image/png'%>
+  <%= stylesheet_link_tag    "application", media: "all"%>
+  <%= javascript_include_tag "application"%>
+  <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css" />
+  <script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
+  <%= csrf_meta_tags %>
+</head>
+<body class="wrapper">
+</script>
+<% render partial: "layouts/git_hub" %>
+<%= render partial: "layouts/nav_top" %>
+<%= yield %>
+<%= render partial: "popups/index" %>
+</body>
+</html>
