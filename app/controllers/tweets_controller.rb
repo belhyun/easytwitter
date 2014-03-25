@@ -23,8 +23,18 @@ class TweetsController < ApplicationController
     gon.type = 3
   end
 
+  def show
+    begin
+      @tweet = Twitter.status(params[:id])
+      render :json => @tweet
+    rescue Exception
+      render :status => 500, :text => 'Not Exists'
+    end
+  end
+
   private
   def set_user_desc
     Tweet.set_user_desc = if session[:user] then  session[:user][:screen_name] else "" end
   end
+
 end
