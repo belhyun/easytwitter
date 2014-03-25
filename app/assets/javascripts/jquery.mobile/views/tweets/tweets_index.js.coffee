@@ -5,8 +5,4 @@ class Mifd.Views.TweetsIndex extends Backbone.View
   initialize: ->
     $("img").error ->
       $(this).attr "src","/assets/designer.jpg"
-    $(document).scrollstart ->
-      console.log 'scrollstart'
-  test: () ->
-    console.log 'scroll'
-  
+    that = @

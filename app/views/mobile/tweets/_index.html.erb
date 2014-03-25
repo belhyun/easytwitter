@@ -2,9 +2,10 @@
   <% tweets.each do |tweet|%>
     <li>
       <%=image_tag(tweet[:user][:image], alt: "Fail") %> 
-      <strong><%=link_to tweet[:user][:name], "http://twitter.com/#{tweet[:user][:screen_name]}"%></strong>
+      <strong><%=link_to tweet[:user][:name].truncate(12), "http://twitter.com/#{tweet[:user][:screen_name]}"%></strong>
       <span class="time"><%=time_ago_in_words(tweet[:created_at].localtime) %></span>
       <div class="text"><%=tweet[:text].gsub(/(https?:\/\/([-\w\.]+)+(:\d+)?(\/([\w\/_\.]*(\?\S+)?)?)?)/){|s|"<a target='_blank' href=#{s}>#{s}</a>"}.html_safe%></div>
     </li>
   <% end %>
 </ul>
+<%= paginate tweets %>

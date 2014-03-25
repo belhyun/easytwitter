@@ -12,6 +12,10 @@ class TweetsController < ApplicationController
   def recent
     gon.tweets = @tweets = Kaminari.paginate_array(Tweet.recent).page(params[:page]).per(10)
     gon.type = 2
+    respond_to do |format|
+      format.html
+      format.json {render json: @tweets.to_json }
+    end
   end
 
   def people

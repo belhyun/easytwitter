@@ -7,9 +7,13 @@
 
 body #tweets{
   li{
+    padding-left:4.25em !important;
     .text{
       white-space:normal;
       line-height:1.563em;
+    }
+    img{
+      padding: .7em;
     }
     .time{
       float:right;
