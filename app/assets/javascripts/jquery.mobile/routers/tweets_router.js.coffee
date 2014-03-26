@@ -11,4 +11,4 @@ class Mifd.Routers.Tweets extends Backbone.Router
     model = new Mifd.Models.Tweet()
     view = new Mifd.Views.TweetShow(model: model)
     model.getTweet(tweetId)
-    view.listenTo(model, 'change', view.update)
+    view.listenTo(model, 'change', view.render)

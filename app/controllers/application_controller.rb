@@ -28,7 +28,7 @@ class ApplicationController < ActionController::Base
   end
 
   def change_view_path 
-    if request.user_agent !=~ /Mobile|webOS/ || params[:m] == 'y'
+    if request.user_agent =~ /Mobile|webOS/ || params[:m] == 'y'
       prepend_view_path "app/views/mobile"
     end
   end

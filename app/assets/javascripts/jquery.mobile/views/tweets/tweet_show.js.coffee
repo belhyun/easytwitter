@@ -1,4 +1,7 @@
 class Mifd.Views.TweetShow extends Backbone.View
+  el:"div[data-role='content']"
+  template: JST['jquery.mobile/templates/tweets/show']
   initialize: ->
-  update: ->
-    console.log this.model.get('id')
+  render: ->
+    $(@el).html(@template({user:@.model.get('user'), tweet:@.model.attributes}))
+

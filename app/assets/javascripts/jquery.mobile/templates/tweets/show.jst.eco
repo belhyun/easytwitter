@@ -1,0 +1,50 @@
+<div class="main-tweet-container">
+  <table id = "tweet-main">
+    <tbody>
+    <tr>
+      <td class="avatar">
+        <a href="">
+          <img alt="" src=<%=@user.profile_image_url%>></img>
+        </a>
+      </td>
+      <td class="user-info">
+        <div class="fullname">
+          <a href="">
+            <strong><%=@user.name%></strong>
+          </a>
+        </div>
+        <a href="">
+          <span class="username">
+            <span>@<%=@user.screen_name%></span>
+          </span>
+        </a>
+      </td>
+    </tr>
+    <tr>
+      <td class="tweet-content" colspan="2">
+        <div class="tweet-text" data-id="">
+          <%=@tweet.text%>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td class="optional-section" colspan="2">
+        <table class="tweet-stat">
+          <tbody>
+            <tr>
+              <td class="stat">
+                <span class="nb">
+                  <span class="starnum"><%=@tweet.favorite_count%> Favorite</span>
+                </span>
+                <span class="nb">
+                  <span class="starnum"><%=@tweet.retweet_count%> Retweet</span>
+                </span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
