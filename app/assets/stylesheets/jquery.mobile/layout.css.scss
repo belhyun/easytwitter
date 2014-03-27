@@ -6,4 +6,10 @@ body{
     text-decoration:none;
     color: #0084B4;
   }
+
+  table{
+    border-collapse: collapse;
+    table-layout: fixed;
+    border-spacing: 0;
+  }
 }

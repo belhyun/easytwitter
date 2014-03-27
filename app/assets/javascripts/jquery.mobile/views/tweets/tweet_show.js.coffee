@@ -4,4 +4,3 @@ class Mifd.Views.TweetShow extends Backbone.View
   initialize: ->
   render: ->
     $(@el).html(@template({user:@.model.get('user'), tweet:@.model.attributes}))
-

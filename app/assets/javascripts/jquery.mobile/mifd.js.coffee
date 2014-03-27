@@ -7,7 +7,7 @@
     initialize: ->
       window.Mifd.Routers.router = new Mifd.Routers.Tweets
       if !Backbone.History.started
-        Backbone.history.start()
+        Backbone.history.start({pushState:true})
   $(document).on "pagecreate", (e)->
     Mifd.initialize()
 ).call(this)

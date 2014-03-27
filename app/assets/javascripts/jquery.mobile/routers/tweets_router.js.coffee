@@ -1,6 +1,5 @@
 class Mifd.Routers.Tweets extends Backbone.Router
   initialize: ->
-    console.log 'init'
   routes:
     '': 'index',
     '/categories/:number': 'index'

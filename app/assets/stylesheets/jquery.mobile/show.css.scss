@@ -1,17 +1,70 @@
 .main-tweet-container{
+  border: 1px solid #ddd;
+  padding:0;
   #tweet-main{
     width:100%;
-  }
-  table{
-    tbody{
-      .avatar{
-        width:55px;
-        img{
-          width:48px;
-        }
+    td{
+      vertical-align:middle;
+    }
+    .avatar{
+      width:55px;
+      img{
+        width:48px;
+      }
+    }
+    .tweet-content{
+      vertical-align:middle;
+      padding: .375em;
+      .tweet-text{
+        padding-bottom:0.938em;
       }
     }
     .optional-section{
+      border-top: 1px solid #e8e8e8;
+      .tweet-stat{
+        width:100%;
+        .stat{
+          text-align:center;
+          padding: 0.938em;
+        }
+      }
     }
+    .user-info{
+      padding: .125em .75em 0 .625em;
+      width:57%;
+      .fullname{
+        font-weight:bold;
+      }
+      .username{
+        font-size:85%;
+      }
+    }
+    .follow-button-container{
+      .w-button-follow{
+        background:#eee;
+        border:1px solid #ccc;
+        padding: .375em .5em;
+      }
+    }
+    .main-tweet-actions{
+      width:100%;
+      .action{
+        img{
+          width:2em;
+          height:2em; 
+        }
+        height: 3em;
+        padding: 0 .75em;
+        vertical-align:middle;
+        text-align:center;
+      }
+    }
+  }
+  .retweet{
+  }
+  .favorite{
+  }
+  .border-right{
+    border-right:1px solid #ddd;
   }
 }
