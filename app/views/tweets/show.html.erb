@@ -1,0 +1,81 @@
+<div class="main-tweet-container">
+  <table id = "tweet-main">
+    <tbody>
+    <tr>
+      <td class="avatar">
+        <a href="">
+          <img alt="" src=<%=@tweet.user.profile_image_url%>></img>
+        </a>
+      </td>
+      <td class="user-info">
+        <div class="fullname">
+          <a href="">
+            <strong><%=@tweet.user.name%></strong>
+          </a>
+        </div>
+        <a href="">
+          <span class="username">
+            <span>@<%=@tweet.user.screen_name%></span>
+          </span>
+        </a>
+      </td>
+      <td class="follow-button-container">
+        <span class="w-button-common w-button-follow">
+          <input alt="팔로우하기" src="https://ma.twimg.com/twitter-mobile/fc48126ff2f004e1c7d4d7405a7f6b01ccdfa537/images/sprites/followplus.gif" type="image">
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td class="tweet-content" colspan="3">
+        <div class="tweet-text" data-id="">
+          <%=@tweet.text%>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td class="optional-section" colspan="3">
+        <table class="tweet-stat">
+          <tbody>
+            <tr>
+              <td class="stat">
+                <span class="nb">
+                  <span class="starnum"><%=@tweet.favorite_count%> Favorite</span>
+                </span>
+              </td>
+              <td class="stat">
+                <span class="nb">
+                  <span class="starnum"><%=@tweet.retweet_count%> Retweet</span>
+                </span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    <tr class="last-section">
+      <td class="optional-section" colspan="3">
+        <table class="main-tweet-actions">
+          <tbody>
+            <tr>
+              <td class="action border-right">
+                <a href="">
+                  <span class="retweet">
+                    리트윗하기
+                  </span>
+                </a>
+              </td>
+              <td class="action">
+                <a href="">
+                  <span class="favorite">
+                    favorite 하기
+                  </span>
+                </a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>

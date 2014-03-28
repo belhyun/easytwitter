@@ -10,4 +10,4 @@ class Mifd.Views.TweetsIndex extends Backbone.View
     that = @
     $(document).scrollstart ->
   profile: (e)->
-    window.Mifd.Routers.router.navigate("tweets/"+$(e.currentTarget).children("#uuid_").attr("value"),{trigger: true})
+    #window.Mifd.Routers.router.navigate("tweets/"+$(e.currentTarget).children("#uuid_").attr("value"),{trigger: true})

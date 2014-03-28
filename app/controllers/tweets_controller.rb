@@ -26,7 +26,10 @@ class TweetsController < ApplicationController
   def show
     begin
       @tweet = Twitter.status(params[:id])
-      render :json => @tweet
+      respond_to do |format|
+        format.html
+        format.json {render json: @tweet.to_json }
+      end
     rescue Exception
       render :status => 500, :text => 'Not Exists'
     end
