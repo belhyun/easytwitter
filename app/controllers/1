@@ -1,0 +1,4 @@
+module TweetsHelper
+  def highlight_link
+  end
+end

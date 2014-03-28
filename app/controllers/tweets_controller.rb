@@ -30,7 +30,7 @@ class TweetsController < ApplicationController
         format.html
         format.json {render json: @tweet.to_json }
       end
-    rescue Exception
+    rescue Mongoid::Errors::DocumentNotFound 
       render :status => 500, :text => 'Not Exists'
     end
   end

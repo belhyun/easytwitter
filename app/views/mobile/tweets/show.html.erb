@@ -1,0 +1,81 @@
+<%=content_tag(:div, class: "main-tweet-container") do %>
+  <%=content_tag(:table, id: "tweet-main") do %>
+    <%=content_tag(:tbody) do %>
+    <tr>
+      <td class="avatar">
+        <%=link_to @tweet.user.profile_image_url do %>
+          <%=image_tag(@tweet.user.profile_image_url, alt: "프로필")%>
+        <%end%>
+      </td>
+      <td class="user-info">
+        <div class="fullname">
+          <a href="">
+            <strong><%=@tweet.user.name%></strong>
+          </a>
+        </div>
+        <a href="">
+          <span class="username">
+            <span>@<%=@tweet.user.screen_name%></span>
+          </span>
+        </a>
+      </td>
+      <td class="follow-button-container">
+        <span class="w-button-common w-button-follow">
+          <%=text_field_tag(nil,nil,{src: "https://ma.twimg.com/twitter-mobile/fc48126ff2f004e1c7d4d7405a7f6b01ccdfa537/images/sprites/followplus.gif", type: 'image', alt: '팔로우하기'})%>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td class="tweet-content" colspan="3">
+        <div class="tweet-text" data-id="">
+          <%=escape_http(@tweet.text)%>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td class="optional-section" colspan="3">
+        <%=content_tag(:table, class: "tweet-stat") do %>
+          <tbody>
+            <tr>
+              <td class="stat">
+                <span class="nb">
+                  <span class="starnum"><%=@tweet.favorite_count%> Favorite</span>
+                </span>
+              </td>
+              <td class="stat">
+                <span class="nb">
+                  <span class="starnum"><%=@tweet.retweet_count%> Retweet</span>
+                </span>
+              </td>
+            </tr>
+          </tbody>
+        <%end%>
+      </td>
+    </tr>
+    <tr class="last-section">
+      <td class="optional-section" colspan="3">
+        <%=content_tag(:table, class: "main-tweet-actions") do %>
+          <tbody>
+            <tr>
+              <td class="action border-right">
+                <a href="">
+                  <span class="retweet">
+                    리트윗하기
+                  </span>
+                </a>
+              </td>
+              <td class="action">
+                <a href="">
+                  <span class="favorite">
+                    favorite 하기
+                  </span>
+                </a>
+              </td>
+            </tr>
+          </tbody>
+          <%end%>
+      </td>
+    </tr>
+    <%end%>
+  <%end%>
+<%end%>
