@@ -3,7 +3,7 @@ window.Mifd =
   Collections: {}
   Views: {}
   Routers: {}
-  initialize: -> 
+  initialize: ->
     window.Mifd.Routers.router = new Mifd.Routers.Tweets
     Backbone.history.start()
 $(document).ready ->

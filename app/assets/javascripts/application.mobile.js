@@ -15,6 +15,7 @@
 //= require ./jquery.mobile/config
 //= require underscore
 //= require backbone
+//= require ./jquery.mobile/layout
 //= require ./jquery.mobile/mifd
 //= require_tree ./jquery.mobile/templates
 //= require_tree ./jquery.mobile/models

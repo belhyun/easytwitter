@@ -24,11 +24,13 @@ class ApplicationController < ActionController::Base
   def set_client
     if current_user      
       @client = get_client(current_user[:oauth_token], current_user[:oauth_token_secret])
+    else
+      @client = Twitter
     end
   end
 
   def change_view_path 
-    if request.user_agent =~ /Mobile|webOS/ || params[:m] == 'y'
+    if request.user_agent !=~ /Mobile|webOS/ || params[:m] == 'y'
       prepend_view_path "app/views/mobile"
     end
   end

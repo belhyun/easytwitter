@@ -59,16 +59,28 @@
             <tr>
               <td class="action border-right">
                 <a href="">
-                  <span class="retweet">
-                    리트윗하기
-                  </span>
+                  <%if !@tweet.retweeted%>
+                    <span class="retweet">
+                     Retweet
+                    </span>
+                  <%else%>
+                    <span class="retweeted">
+                      Retweeted
+                    </span>
+                  <%end%>
                 </a>
               </td>
               <td class="action">
                 <a href="">
+                  <%if !@tweet.favorited%>
                   <span class="favorite">
-                    favorite 하기
+                    Favorite
                   </span>
+                  <%else%>
+                    <span class="favorited">
+                      Favorited 
+                    </span>
+                  <%end%>
                 </a>
               </td>
             </tr>

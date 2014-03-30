@@ -1,0 +1,17 @@
+<div data-role="popup" id="are-you-login" data-corners="true" data-shadow="true" data-overlay-theme="a" data-theme="b" data-transition="none" >
+  <a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-left">Close</a>
+  <div data-role="header" data-theme="a">
+    <h1 class="ui-title" role="heading">
+      이지트위터
+    </h1>
+  </div>
+  <div data-role="content" data-theme="d" role="main">
+    <h3 class="ui-title">트위터 로그인 하시겠습니까?</h3>
+    <%=link_to "확인","#",{"data-role" => "button", "data-inline" => "true", 
+                           "data-rel" => "back", "data-theme" => "a",
+                           "data-corners" => "true", "data-shadow" => "true", "data-iconshadow" => "true"}%>
+    <%=link_to "취소","#",{"data-role" => "button", "data-inline" => "true", 
+                           "data-rel" => "back", "data-theme" => "a",
+                           "data-corners" => "true", "data-shadow" => "true", "data-iconshadow" => "true"}%>
+  </div> 
+</div>

@@ -3,6 +3,9 @@ class Tweet
     def set_user_desc=(user_desc)
       @user_desc  = user_desc
     end
+    def client=(client)
+      @client = client
+    end
   end
   include Mongoid::Document
   field :uuid, type: String

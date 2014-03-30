@@ -1,7 +1,8 @@
 class TweetsController < ApplicationController
   before_action :set_user_desc
+  before_action :client
   def test
-    render :layout => false
+    @client = Twitter.status(params[:id])
   end
 
   def index
@@ -25,10 +26,11 @@ class TweetsController < ApplicationController
 
   def show
     begin
-      @tweet = Twitter.status(params[:id])
+      hash = {:tweet => @tweet = @client.status(params[:id]),
+              :user => current_user}
       respond_to do |format|
         format.html
-        format.json {render json: @tweet.to_json }
+        format.json {render json: hash.to_json }
       end
     rescue Mongoid::Errors::DocumentNotFound 
       render :status => 500, :text => 'Not Exists'
@@ -38,6 +40,10 @@ class TweetsController < ApplicationController
   private
   def set_user_desc
     Tweet.set_user_desc = if session[:user] then  session[:user][:screen_name] else "" end
+  end
+
+  def client
+    Tweet.client = @client
   end
 
 end
