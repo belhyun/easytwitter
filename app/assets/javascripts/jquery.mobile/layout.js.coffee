@@ -1,5 +1,5 @@
 (()->
-  $(".ui-title").click () ->
+  $("#main-title").click () ->
     alert 1
-    #location.href = "/"
+    location.href = "/"
 ).call(this)
