@@ -1,0 +1,8 @@
+<div data-role="panel" id="right-panel" data-theme="b" data-display="push" data-position="right">
+  <!--<a href="#main-page" data-rel="close" data-role="button">Close</a>-->
+  <% if @current_controller != 'categories' %>
+    <%= render partial: "tweets/order" %>
+  <% else %>
+    <%= render partial: "tweets/category_order" %>
+  <% end %>
+</div>

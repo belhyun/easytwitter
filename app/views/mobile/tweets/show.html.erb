@@ -3,26 +3,30 @@
     <%=content_tag(:tbody) do %>
     <tr>
       <td class="avatar">
-        <%=link_to @tweet.user.profile_image_url do %>
-          <%=image_tag(@tweet.user.profile_image_url, alt: "프로필")%>
-        <%end%>
+        <%=image_tag(@tweet.user.profile_image_url, alt: "프로필")%>
       </td>
       <td class="user-info">
         <div class="fullname">
           <a href="">
-            <strong><%=@tweet.user.name%></strong>
+            <%=link_to "http://twitter.com/#{@tweet.user.screen_name}" do %>
+              <strong><%=@tweet.user.name%></strong>
+            <%end%>
           </a>
         </div>
         <a href="">
           <span class="username">
-            <span>@<%=@tweet.user.screen_name%></span>
+            <%=link_to "http://twitter.com/#{@tweet.user.screen_name}" do %>
+              <span>@<%=@tweet.user.screen_name%></span>
+            <%end%>
           </span>
         </a>
       </td>
       <td class="follow-button-container">
-        <span class="w-button-common w-button-follow">
-          <%=text_field_tag(nil,nil,{src: "https://ma.twimg.com/twitter-mobile/fc48126ff2f004e1c7d4d7405a7f6b01ccdfa537/images/sprites/followplus.gif", type: 'image', alt: '팔로우하기'})%>
-        </span>
+        <%if !@tweet.user.following %>
+          <span class="w-button-common w-button-follow">
+            <%=text_field_tag(nil,nil,{src: "https://ma.twimg.com/twitter-mobile/fc48126ff2f004e1c7d4d7405a7f6b01ccdfa537/images/sprites/followplus.gif", type: 'image', alt: '팔로우하기'})%>
+          </span>
+        <%end%>
       </td>
     </tr>
     <tr>

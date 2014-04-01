@@ -1,23 +1,24 @@
 class Mifd.Views.TweetShow extends Backbone.View
-  el:"div[data-role='content']"
+  el:"body"
   template: JST['jquery.mobile/templates/tweets/show']
   events:
     "click .main-tweet-actions span.retweet":'retweet'
     "click .main-tweet-actions span.favorite":'favorite'
     "click .main-tweet-container #tweet-main .follow-button-container .w-button-follow" : "follow"
-    "click #main-title" : "main"
-  main: ->
+    "click #login-ok" : "login"
+  login: ->
+    e.preventDefault()
     alert 1
   initialize: ->
     #get model data
     #window.onpopstate = (e) ->
     #window.location.href = "/"
+    $("img").error ->
+      $(this).attr "src","/assets/designer.jpg"
   render: ->
     #$(@el).html(@template({user:@.model.get('user'), tweet:@.model.attributes}))
   retweet: (e)->
     e.preventDefault()
-    alert "준비중입니다."
-    return
     if _.isNull(@model.get('user'))
       $("#are-you-login").popup({
       }).popup("open")
@@ -27,9 +28,7 @@ class Mifd.Views.TweetShow extends Backbone.View
       )
   favorite: (e) ->
     e.preventDefault()
-    alert "준비중입니다."
-    return
-    if _.isUndefined(@model.get('user'))
+    if _.isNull(@model.get('user'))
       $("#are-you-login").popup({
       }).popup("open")
     else
@@ -37,5 +36,13 @@ class Mifd.Views.TweetShow extends Backbone.View
         $(e.currentTarget).text('Favorited').removeClass("favorite").addClass("favorited")
       )
   follow: (e) ->
-    alert "준비중입니다."
-    return
+    e.preventDefault()
+    Backbone.ajax(
+      type:'post'
+      dataType: 'json'
+      url: '/api/v1/users/follow'
+      data: {f_id:@model.get('tweet').user.id}
+      success: (resp)->
+        if resp.result == 1
+          $(".w-button-follow").fadeOut(1000)
+    )

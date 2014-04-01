@@ -7,11 +7,13 @@
   </div>
   <div data-role="content" data-theme="d" role="main">
     <h3 class="ui-title">트위터 로그인 하시겠습니까?</h3>
-    <%=link_to "확인","#",{"data-role" => "button", "data-inline" => "true", 
-                           "data-rel" => "back", "data-theme" => "a",
+    <%=link_to "확인","/auth/twitter",{"id" => "login-ok",
+                           "data-role" => "button", "data-inline" => "true", 
+                           "data-icon" => "forward", "data-theme" => "a",
                            "data-corners" => "true", "data-shadow" => "true", "data-iconshadow" => "true"}%>
-    <%=link_to "취소","#",{"data-role" => "button", "data-inline" => "true", 
-                           "data-rel" => "back", "data-theme" => "a",
+    <%=link_to "취소","#",{"id" => "login-cancel",
+                           "data-role" => "button", "data-inline" => "true", 
+                           "data-icon" => "back", "data-rel" => "back", "data-theme" => "a",
                            "data-corners" => "true", "data-shadow" => "true", "data-iconshadow" => "true"}%>
   </div> 
 </div>

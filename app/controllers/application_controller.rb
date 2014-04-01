@@ -19,6 +19,7 @@ class ApplicationController < ActionController::Base
 
   def set_categories
     @categories = Category.all 
+    @current_controller = controller_name
   end
 
   def set_client
