@@ -44,5 +44,5 @@ class Mifd.Views.TweetShow extends Backbone.View
       data: {f_id:@model.get('tweet').user.id}
       success: (resp)->
         if resp.result == 1
-          $(".w-button-follow").fadeOut(1000)
+          $(".w-button-follow").fadeOut(100)
     )

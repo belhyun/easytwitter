@@ -8,6 +8,8 @@ class Tweet
     end
   end
   include Mongoid::Document
+  include AutoHtmlFor
+
   field :uuid, type: String
   field :text, type: String
   field :created_at, type: DateTime
@@ -21,6 +23,16 @@ class Tweet
   belongs_to :user
   scope :tweet_uuid, ->(tweet_uuid){where(tweet_uuid: tweet_uuid)}
   scope :today, where(:created_at.gte => Date.today-1)
+=begin
+  auto_html for :text do
+    html_escape
+    image
+    youtube(:width => 400, :height => 250, :autoplay => true)
+    link :target => '_blank', :rel => 'nofollow'
+    simple_format
+  end
+=end
+
   def self.tweet_with_user(tweets)
     tweets.each_with_object([]){|tweet, tweet_with_user|
       tweet.attributes[:user] = tweet.user.attributes

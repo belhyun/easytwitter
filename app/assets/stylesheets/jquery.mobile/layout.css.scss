@@ -12,4 +12,20 @@ body{
     table-layout: fixed;
     border-spacing: 0;
   }
+
+  div[role=main] {
+    background-color:#c0deed;
+  }
+  div[data-role=header] {
+    background-color:#50a7e6;
+  }
+  div[data-role=panel] {
+    background-color:#c0deed;
+    border-color:#ffffff;
+  }
+  li[data-role=list-divider] {
+    background-color:#50a7e6;
+    color:#ffffff;
+    text-shadow:none;
+  }
 }
