@@ -28,4 +28,13 @@ body{
     color:#ffffff;
     text-shadow:none;
   }
+  .ui-panel-page-content-position-left.ui-panel-page-content-display-push{
+    margin-left:0;
+  }
+  .ui-panel-page-content-position-right.ui-panel-page-content-display-push{
+    margin-right:0;
+  }
+  .ui-panel-open.ui-panel-position-right.ui-panel-display-push{
+    border-left-width:0;
+  }
 }

@@ -12,9 +12,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body class="ui-mobile-viewport ui-overlay-d">
+  <%= render partial: "layouts/ga" %>
   <div data-role="page" id="main-page" data-theme="a" data-url="main-page">
     <%= render :partial => 'mobile/layouts/header' %>
-    <div data-role="content">
+    <div data-role="content" id="tweet-show">
      <%= yield %>
     </div>
     <%= render :partial => 'mobile/layouts/left_panel' %>
