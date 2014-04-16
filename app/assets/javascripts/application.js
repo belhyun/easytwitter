@@ -17,6 +17,7 @@
 //= require underscore
 //= require backbone
 //= require mifd
+//= require ceres
 //= require_tree ./popups
 //= require_tree ../templates
 //= require_tree ./models

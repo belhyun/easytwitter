@@ -8,6 +8,7 @@ class ApplicationController < ActionController::Base
   before_action :set_categories
   before_action :set_client
   before_action :change_view_path
+  before_action :set_user_desc
 
   def current_user
     @current_user ||= session[:user] if session[:user]
@@ -34,5 +35,9 @@ class ApplicationController < ActionController::Base
     if request.user_agent =~ /Mobile|webOS/ || params[:m] == 'y'
       prepend_view_path "app/views/mobile"
     end
+  end
+
+  def set_user_desc
+    Tweet.set_user_desc = if session[:user] then  session[:user][:screen_name] else "" end
   end
 end

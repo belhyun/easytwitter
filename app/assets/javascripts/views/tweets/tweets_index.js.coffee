@@ -61,6 +61,7 @@ class Mifd.Views.TweetsIndex extends Backbone.View
           $(this).dialog "close"
   is_login: ->
     @.mifd_dialog "#dialog-confirm",(->
+      ceres.CK.set('referer', encodeURI(document.URL))
       location.href = "/auth/twitter"
     )
   already_request: ->
@@ -85,6 +86,7 @@ class Mifd.Views.TweetsIndex extends Backbone.View
         user_tweet.save null,
           success: (model,response) ->
             $("#spinner,#modal").css("display","none")
+            $(event.currentTarget).remove()
             if(Number(response.result))
               if chk == 'is_retweet'
                 tweet.set

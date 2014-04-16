@@ -20,29 +20,38 @@ class Mifd.Views.TweetShow extends Backbone.View
   retweet: (e)->
     e.preventDefault()
     if _.isNull(@model.get('user'))
+      ceres.CK.set('referer', encodeURI(document.URL))
       $("#are-you-login").popup({
       }).popup("open")
     else
       window.Mifd.Util.tweetRequest(@model.get('user').screen_name, 'R', @model.get('tweet').id_str, () ->
-        $(e.currentTarget).text('Retweeted').removeClass("retweet").addClass("retweeted")
+        $(e.currentTarget).find('img').attr("src","/assets/jquery.mobile/1396851700_retweet.png")
+        $(e.currentTarget).find('span').removeClass("retweet").addClass("retweeted")
       )
   favorite: (e) ->
     e.preventDefault()
     if _.isNull(@model.get('user'))
+      ceres.CK.set('referer', encodeURI(document.URL))
       $("#are-you-login").popup({
       }).popup("open")
     else
       window.Mifd.Util.tweetRequest(@model.get('user').screen_name, 'F', @model.get('tweet').id_str, () ->
-        $(e.currentTarget).text('Favorited').removeClass("favorite").addClass("favorited")
+        $(e.currentTarget).find('img').attr("src","/assets/jquery.mobile/1396851385_keditbookmarks.png")
+        $(e.currentTarget).find('span').removeClass('favorite').addClass('favorited')
       )
   follow: (e) ->
     e.preventDefault()
-    Backbone.ajax(
-      type:'post'
-      dataType: 'json'
-      url: '/api/v1/users/follow'
-      data: {f_id:@model.get('tweet').user.id}
-      success: (resp)->
-        if resp.result == 1
-          $(".w-button-follow").fadeOut(100)
-    )
+    if _.isNull(@model.get('user'))
+      ceres.CK.set('referer', encodeURI(document.URL))
+      $("#are-you-login").popup({
+      }).popup("open")
+    else
+      Backbone.ajax(
+        type:'post'
+        dataType: 'json'
+        url: '/api/v1/users/follow'
+        data: {f_id:@model.get('tweet').user.id}
+        success: (resp)->
+          if resp.result == 1
+            $(".w-button-follow").fadeOut(100)
+      )

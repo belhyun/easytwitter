@@ -1,5 +1,4 @@
 class TweetsController < ApplicationController
-  before_action :set_user_desc
   before_action :client
   def test
     @client = Twitter.status(params[:id])
@@ -38,9 +37,6 @@ class TweetsController < ApplicationController
   end
 
   private
-  def set_user_desc
-    Tweet.set_user_desc = if session[:user] then  session[:user][:screen_name] else "" end
-  end
 
   def client
     Tweet.client = @client

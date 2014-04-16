@@ -65,11 +65,11 @@
                 <a href="">
                   <%if !@tweet.retweeted%>
                     <span class="retweet">
-                     Retweet
+                      <%= image_tag "jquery.mobile/1396851569_retweet.png" %>
                     </span>
                   <%else%>
                     <span class="retweeted">
-                      Retweeted
+                      <%= image_tag "jquery.mobile/1396851700_retweet.png" %>
                     </span>
                   <%end%>
                 </a>
@@ -78,11 +78,11 @@
                 <a href="">
                   <%if !@tweet.favorited%>
                   <span class="favorite">
-                    Favorite
+                    <%= image_tag "jquery.mobile/1396851445_89.png" %>
                   </span>
                   <%else%>
                     <span class="favorited">
-                      Favorited 
+                      <%= image_tag "jquery.mobile/1396851385_keditbookmarks.png" %>
                     </span>
                   <%end%>
                 </a>
