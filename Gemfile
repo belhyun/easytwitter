@@ -59,6 +59,9 @@ gem 'twitter-bootstrap-rails'
 gem 'less-rails'
 gem 'jquery_mobile_rails'
 gem 'auto_html'
+gem 'rcodetools'
+gem 'fastri'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

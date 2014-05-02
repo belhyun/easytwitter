@@ -6,7 +6,7 @@
   min-height:100%;
   margin: 0 auto;
   padding: 54px 14px 15px;
-  width: 837px;
+  width: 1016px;
   overflow:hidden;
   
   .mini-profile{
@@ -40,11 +40,12 @@
   }
 
   .content-main{
-    width: 70%;
+    width: 50%;
     border: 1px solid #e8e8e8;
     margin: 30px auto 0px;
     border-radius: 6px;
-    float:right;
+    float:left;
+    margin-left: 49.2px;
     .content-header{
       .text{
         //float:left;

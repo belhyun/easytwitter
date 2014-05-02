@@ -1,0 +1,14 @@
+<div id="trends" class="white-background content-border">
+  <div class="content-header">
+    <div class="header-inner">
+      <h2>Trends</h2>
+    </div>
+  </div>
+  <ul id="trend-list">
+    <%@trends.each do |trend| %>
+      <li>
+      <%= link_to trend.name, trend.url, {:target => :blank} %>
+      </li>
+    <%end%>
+  </ul>
+</div>

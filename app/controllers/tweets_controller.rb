@@ -1,5 +1,6 @@
 class TweetsController < ApplicationController
   before_action :client
+
   def test
     @client = Twitter.status(params[:id])
   end
@@ -41,5 +42,4 @@ class TweetsController < ApplicationController
   def client
     Tweet.client = @client
   end
-
 end

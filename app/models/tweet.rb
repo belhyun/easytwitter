@@ -68,6 +68,7 @@ class Tweet
       category = Category.find_or_create_by(name: category.to_s, id: idx+1)
       tweet_users.each do |tweet_user|
         begin
+          p tweet_user
           Twitter.user_timeline(tweet_user, :count => 10).each do |timeline|
             if timeline.in_reply_to_status_id.nil?
               user = User.save(timeline)
@@ -88,9 +89,13 @@ class Tweet
               user.save
             end#endof if
           end#endof do
-        rescue Twitter::Error::TooManyRequests => error
-          sleep error.rate_limit.reset_in
-          retry
+        rescue Twitter::Error::TooManyRequests, Twitter::Error::Unauthorized => error
+          if error == Twitter::Error::Unauthorized
+            next
+          elsif error == Twitter::Error::TooManyRequests
+            sleep error.rate_limit.reset_in
+            retry
+          end
         end#end of begin
       end
     end

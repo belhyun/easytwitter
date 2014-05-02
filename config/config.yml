@@ -36,7 +36,6 @@ defaults: &defaults
       - 'keumkangkyung'
       - '0101xiahtic'
       - 'BeeeestDJ'
-      - 'siwon407'
       - 'shfly3424'
     영화.드라마:
       - 'ssinz'
@@ -208,7 +207,7 @@ defaults: &defaults
       - 'snuh_hpc'
   twitter_key: "2wfjnSrPWPSTdqZVlWYyJg"
   twitter_secret: "k5iqKtaLyZlnOcVJKg5VrdSTOBPYY55ta6nvRoClo"
-
+  geo_id: 23424868
 development:
   <<: *defaults
 production:

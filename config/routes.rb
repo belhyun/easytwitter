@@ -17,6 +17,7 @@ Mifd::Application.routes.draw do
       resources :tweets do
         collection do
           get 'rank'
+          get 'trend'
         end
       end
       resources :user_tweets, only: [:create] 

@@ -13,8 +13,12 @@
             </li>
             <li id="global-nav-me">
               <% if !current_user %>
-                <%= link_to "/auth/twitter" do %>
+                <%= link_to "#none",{:class => :login} do %>
                   <%= image_tag image_path("twitter-login.png")%>
+                <% end %>
+              <% else %>
+                <%= link_to "/signout",{:class => :logout} do %>
+                  <%= image_tag image_path("1398753515_logout.png"), {:style => "width:37px;height:37px"}%>
                 <% end %>
               <% end %>
             </li>

@@ -1,9 +1,10 @@
 class Mifd.Views.TweetsIndex extends Backbone.View
   template: JST['tweets/index']
-  el: 'body .content-main'
+  el: 'body'
   events:
     'click .tweet-actions li .retweet,.tweet-actions li .favorite': 'tweet_action'
     'click .tweet-items .content .header img': 'user_profile'
+    'click #global-nav-me a.login img': 'login'
   initialize: ->
     $("img").error ->
       $(this).attr "src","/assets/designer.jpg"
@@ -32,7 +33,7 @@ class Mifd.Views.TweetsIndex extends Backbone.View
   user_profile: (event) ->
     $("#spinner,#modal").css("display","block")
     tweet = @collection.at($(event.currentTarget).parents('.content').parent('li').index())
-    template = _.template("http://easytwitter.co.kr/users/<%= uuid %>")
+    template = _.template('http://'+document.location.host+"/users/<%= uuid %>")
     Backbone.ajax(
       type:'get'
       dataType: 'html'
@@ -64,6 +65,9 @@ class Mifd.Views.TweetsIndex extends Backbone.View
       ceres.CK.set('referer', encodeURI(document.URL))
       location.href = "/auth/twitter"
     )
+  login: (event) ->
+    event.preventDefault()
+    @.is_login()
   already_request: ->
     @.mifd_dialog "#dialog-already",(that)->
       that.dialog.call that , "close"

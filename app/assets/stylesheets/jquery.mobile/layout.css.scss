@@ -37,4 +37,16 @@ body{
   .ui-panel-open.ui-panel-position-right.ui-panel-display-push{
     border-left-width:0;
   }
+
+  .ui-content{
+    padding:0;
+    overflow-x:visible;
+    padding-right:0.22em;
+  }
+  .ui-tabs{
+    margin-top:0.625em;
+  }
+  .ui-btn-active{
+    background-color:#50a7e6 !important;
+  }
 }

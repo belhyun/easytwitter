@@ -1,0 +1,20 @@
+<div data-role="tabs" id="tabs" data-theme="b" style="width:100%">
+  <div data-role="navbar">
+    <ul>
+      <li class="ui-btn-active"><a href="#one" data-ajax="false">Today's Tweets</a></li>
+      <li><a href="#two" data-ajax="false">Trends</a></li>
+    </ul>
+  </div>
+  <div id="one" class="ui-body-d ui-content">
+    <%= yield %>
+  </div>
+  <div id="two">
+    <ul data-role="listview" data-inset="true">
+    <%@trends.each do |trend| %>
+      <li>
+      <%= link_to trend.name, trend.url, {:target => :blank} %>
+      </li>
+    <%end%>
+    </ul>
+  </div>
+</div>

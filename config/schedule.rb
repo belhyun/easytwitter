@@ -14,6 +14,9 @@ every 30.minutes do
   runner "Tweet.create_tweet"
 #   rake "some:great:rake:task"
 end
+every 1.hours do
+  runner "Trend.create_trends"
+end
 #
 # every 4.days do
 #   runner "AnotherModel.prune_old_records"
